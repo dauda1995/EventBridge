@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">eventbridge</div>
+
+            <ul class="nav-items">
+               
+                <li>
+                    <a href="">your username</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-root">
+
+        
+        <div class="categories">
+            <div class="heading">
+                <!-- <h1>Events</h1> -->
+            </div>
+            <nav class="navbar-categories">
+                <ul class="nav-items">
+                    <li id="first-item">
+                        <div class="back-arr"><img src="/resources/img/arrow.svg" alt="" class="back-arr">
+                        <a href="/EventListPage/EventList.html"> <img src="" alt="" class="">Events</a>
+                        </div>
+                       
+                    </li>
+
+                </ul>
+            </nav>
+
+          
+
+       
+        <div class="horizontal">
+           
+            <div class="search-container">
+                <div class="location-heading">
+                    <div  ><h2 class="input-head">Basic info</h2>
+                    <p>Name your event and tell event-goers why 
+                        they should come. Add details that highlight
+                         what makes it unique.</p></div>
+                <div class="">
+                    <label for="title"></label>
+                    <input type="text" class="search-input" placeholder="Event title" name="title" id="event-title">
+                </div>
+                <div class="">
+                    <label for="organiser"></label>
+                    <input type="text" class="search-input" placeholder="Tell attendees who is organising this event" name="organiser" id="event-organiser">
+                </div>
+
+                <div class="status">
+                    <select name="status" class="event-status" id = "event-type" >
+                        <option value="draft">Draft</option>
+                        <option value="past">Past</option>
+                        <option value="published">Published</option>
+                    </select>
+
+                    <select name="status" class="event-status" id="event-category">
+                        <option value="draft">Draft</option>
+                        <option value="past">Past</option>
+                        <option value="published">Published</option>
+                    </select>
+                </div>
+
+
+            </div>
+
+            <div class="event-location">
+                <div class="location-heading">
+                    <div  ><h2 class="input-head">Location</h2>
+                    <p>Help people in the area discover your 
+                        event and let attendees know where to 
+                        show up.</p></div>
+                    <div id="three">
+                        <button class="list-button" ><p>Venue</p></button>
+                        <button class="list-button" ><p>Online event</p></button>
+                        <button class="list-button" ><p>To be announced</p></button>
+                    </div>
+                    <div class="">
+                       <!-- ? <label for="title">Location</label> -->
+                        <input type="text" class="search-input" placeholder="Location" name="title" id="event-title">
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-location">
+                <div class="location-heading">
+                    <div ><h2 class="input-head">Date and Time</h2>
+                    <p>Tell event-goers when your event starts 
+                        and ends so they can make plans to attend.
+                    </p>
+                </div>
+                    <div id="three">
+                        <button class="list-button" ><p>Single Event</p></button>
+                        <button class="list-button" ><p>Recurring Event</p></button>
+                        
+                    </div>
+                    <div class="choose-date">
+                        <div class="date-field">
+                            <div class="start">
+                                <div class="time-container">
+                                    <label for="start-date">Event starts</label>
+                                    <input type="date" class="time-input" placeholder="Event starts" name="start-date" id="event-date-start">
+                                </div>
+                                <div class="time-container">
+                                    
+                               <label for="start-time">Time</label>
+                               <input type="date" class="time-input" placeholder="Start time" name="state-time" id="event-time-start">
+  
+                                </div>
+                               
+                            </div>
+                           <div class="end">
+                            <div class="class-container">
+                                <label for="end-date">Event ends</label>
+                                <input type="date" class="time-input" placeholder="Event ends" name="end-date" id="event-date-end">
+                            </div>
+                           <div class="class-container">
+                            <label for="end-time">Time</label>
+                            <input type="date" class="time-input" placeholder="end time" name="end-time" id="event-time-start">
+                           </div>
+                          
+                           </div>
+                          
+                         </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+           
+           
+            </div>
+        </div>
+       
+      
+        
+    </div>
+    <div class="event-list-lower">
+
+        <div class="create-categories">
+            <div class="empty"> </div>
+           
+            <div class="create">
+                <button class="calendar-button" ><p>Discard</p></button>
+                <button class="create-button"><p>Create</p></button>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

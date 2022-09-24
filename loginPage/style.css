@@ -1,0 +1,177 @@
+body{
+    background-color: #ffffff;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.container-root{
+   display: flex;
+   flex-direction: column;
+    height: 100%;
+    /* border: 1px solid #000; */
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    /* background-color: blue; */
+    height: 90vh;
+}
+
+.bottom, footer{
+  
+    background-color:#1e0a3c;
+    color: #ffffff;
+    height: 40vh;
+}
+
+div.form{
+    display: flex;
+    /* background-color: burlywood; */
+    width: 50%;
+    max-width: 600px;
+    justify-content: center;
+    
+}
+
+div.img-hero{
+    /* background-color:blueviolet; */
+    width: 50%;
+    align-self:flex-start;
+}
+
+
+form{
+    
+    /* border: 3px solid #f1f1f1; */
+   
+}
+
+.eform{
+    /* background-color: cadetblue; */
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-self: center;
+    align-content: center;
+    height: 70%;
+    justify-content: center;
+    
+}
+
+
+
+div.form-container{
+    display:flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-left: 60px;
+    
+    
+}
+
+
+input[type=text], input[type=password], input[type=button]{
+    width:60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-shadow:0px 1px 0px #888888;
+    
+    
+}
+
+button{
+    background-color: #d1420d;
+    color: white;
+    padding: 12px 20px;
+    margin: 40px 0;
+    border: none;
+    cursor: pointer;
+    width: 71%;
+    border-radius: 4px;
+}
+
+ #company-name{
+   font-size: x-large;
+   margin-bottom: 12px;
+   font-weight:bold;
+   color: #f05537;
+}
+
+#create-header{
+    margin-top: 3px;
+
+    
+}
+
+
+
+.names{
+    display: flex;
+    justify-content:space-around;
+
+    width: 71%;
+    margin: 0;
+    align-self:auto;
+
+}
+
+.names input{
+
+    padding: 12px 20px;
+    width: 31%;
+    border: 1px solid #ccc;
+    
+}
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+div .footer-details{
+    height: 80%;
+    width: 100%;
+    display: flex; 
+    flex-direction: row;
+    justify-content:space-around;
+
+
+}
+
+div .footer-copy{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+}
+
+div.footer-details h4, 
+div.footer-details p,
+div.footer-copy p{
+    font-size:small;
+    margin-bottom: 0px;
+}
+
+.col-1 {
+    margin-left: 5%;
+    justify-content: center;
+    
+}
+
+.footer-copy p{
+
+}
+
+
+
+
+
+
+
+
