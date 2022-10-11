@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Event Details</title>
 </head>
 <body>
     <div class="root-container">
@@ -13,15 +13,15 @@
             <div class="nav-container">
                 <div class="logo">eventbridge</div>
                 <ul class="nav-items">
-                    <li>
-                        <a href="">Browse Events</a>
+                    <li id ="events-list">
+                       <a href="" >Browse Events</a>
                     </li>
-                    <li>
+                    <li id="create-event">
                         <a href="">Create an Event</a>
                     </li>
                
                     <li>
-                        <a href="">your username</a>
+                        <a href="" id = user-name>your username</a>
                     </li>
                 </ul>
                 </div>
@@ -29,14 +29,14 @@
         </nav>
 
         <div class="hero-container">
-            <img src="/resources/img/pexels-pixabay-163036.jpg" alt="" class="hero-img" id="event_image">
+            <img src="../resources/img/pexels-pixabay-163036.jpg" alt="" class="hero-img" id="event_image">
         </div>
 
         <div class="event-details-container">
             <div class="img-head">
                 <div class="img-head-container">
                     <div class="img-container">
-                        <img src="/resources/img/pexels-pixabay-163036.jpg" alt="" class="img-event" id="event_image">
+                        <img src="../resources/img/pexels-pixabay-163036.jpg" alt="" class="img-event" id="event_image">
                     </div>
     
                     <div class="heading-detail">
@@ -61,7 +61,7 @@
                 </div>
             <div class="lower-container">
                     <div class="register-event">
-                        <button class="register"><p>Register</p></button>
+                        <button class="register"><p id = "reg">Register</p></button>
                     </div>
                 
             <div class="details-contains">
@@ -70,7 +70,7 @@
                     <div class="first-container">
 
                         <div class="left-side">
-                            <p id="event-heading"><strong>Africa Real Estate Summit. Award & Expo 2022</strong></p>
+                            <p id="event-headings">Africa Real Estate Summit. Award & Expo 2022</p>
                             <p><strong>About this event</strong> </p>
                             <p id="summary">The Africa Real Estate Summit and Awards is a two day summit, 
                                 exhibition, and awards ceremony designed to create an opportunity 
@@ -104,6 +104,10 @@
         </div>
     </div>
     </div>
-    
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type = "module" src="eventPage.js"></script>
+
 </body>
+
 </html>

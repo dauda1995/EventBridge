@@ -11,7 +11,7 @@ body{
 
 
 *{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Mulish';font-size: 15px;
   
     margin: 0;
     padding: 0;
@@ -32,7 +32,7 @@ body{
     display: flex;
     flex-direction: column;
     padding-left: 20px;
-    margin-left: 20vw;
+    margin-left: 25vw;
    
    
     
@@ -40,7 +40,7 @@ body{
   
 }
 .navbar-categories{
-    margin-left: 15vw;
+    margin-left: 20vw;
 }
 
 .vertical{
@@ -101,6 +101,10 @@ ul{list-style-type: none;}
    
 }
 
+.event-status{
+    width:50px
+}
+
 .navbar ul li, .navbar-categories ul li{
     margin-left: 20px;
 }
@@ -120,6 +124,8 @@ a{
 .logo {
     font-size: x-large;
     font-weight: bold;
+    color: #d1410c;
+    font-weight: bolder;
 }
 
 
@@ -131,8 +137,8 @@ a{
     height: 100%;
 } */
 .categories .heading{
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 80vw;
     display: flex;
     flex-direction: row;
@@ -216,14 +222,26 @@ a{
 
 .status{
     display: flex;
+  
     justify-content: start;
+    
+    
+}
+#event-cost{
+    width: 170px;
+}
+#event-type{
+    border: 1px solid #948f9c;
+    
 }
 
 .search-container .event-status{
-    padding:15px 20px;
+    padding:20px 20px;
     width: 15vw;
     margin-right: 15px;
 }
+
+
 
 .event-list{
     display: flex;
@@ -236,6 +254,8 @@ a{
     background-color: #f8f7fa;
     
 }
+
+
 
 .event-list-lower{
     display: flex;
@@ -335,7 +355,14 @@ a{
     margin-right:15px;
     margin-top: 20px;
     border-radius: 3px;
-    border: 1px solid #948f9c;
+    border: 2px solid #948f9c;
+}
+.list-button-time{
+    padding:12px 25px;
+    margin-right:15px;
+    margin-top: 20px;
+    border-radius: 3px;
+    border: 2px solid #948f9c;
 }
 
 .search-input, .event-status{
@@ -375,10 +402,21 @@ a{
     margin-bottom: 5px;
 }
 
-button:hover{
-    border: 2px solid #000;
+button:hover, #event-type:hover{
+    border: 2px solid #4169e7;
+    /* color: #4169e7; */
 }
 
-input:hover{
-    border: 2px solid #000;
+
+
+input:hover, textarea:hover, select:hover{
+    border:2px Solid #4169e7;
+    color: #4169e7;
+
+}
+
+.button-select{
+    background-color:#ebeefc; 
+    color:#4169e7; 
+    border:2px Solid #4169e7;
 }

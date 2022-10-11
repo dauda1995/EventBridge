@@ -1,0 +1,22 @@
+{
+  "name": "eventbridge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dauda1995/EventBridge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dauda1995/EventBridge/issues"
+  },
+  "homepage": "https://github.com/dauda1995/EventBridge#readme",
+  "dependencies": {
+    "jquery": "^3.6.1"
+  }
+}

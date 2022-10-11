@@ -7,6 +7,8 @@
     
     <title>Events</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Mulish' rel='stylesheet'>
+
 </head>
 <body>
     
@@ -17,7 +19,7 @@
             <ul class="nav-items">
                
                 <li>
-                    <a href="">your username</a>
+                    <a href="" id="user-name">your username</a>
                 </li>
             </ul>
         </div>
@@ -32,7 +34,7 @@
             <nav class="navbar-categories">
                 <ul class="nav-items">
                     <li id="first-item">
-                        <div class="back-arr"><img src="/resources/img/arrow.svg" alt="" class="back-arr">
+                        <div class="back-arr"><img src="/New folder/resources/img/arrow/back-arrow.svg" alt="" class="back-arr">
                         <a href="/EventListPage/EventList.html"> <img src="" alt="" class="">Events</a>
                         </div>
                        
@@ -54,25 +56,26 @@
                          what makes it unique.</p></div>
                 <div class="">
                     <label for="title"></label>
-                    <input type="text" class="search-input" placeholder="Event title" name="title" id="event-title">
+                    <input type="text" class="search-input" placeholder="Event title" name="title" id="event-title" required>
                 </div>
                 <div class="">
                     <label for="organiser"></label>
-                    <input type="text" class="search-input" placeholder="Tell attendees who is organising this event" name="organiser" id="event-organiser">
+                    <input type="text" class="search-input" placeholder="Tell attendees who is organising this event" name="organiser" id="event-organiser" required>
+                </div>
+
+                <div class="">
+                    <label for="organiser"></label>
+
+                    <textarea class="search-input" placeholder="Tell attendees what your event is all about, be descriptive" name="organiser" id="event-summary" rows="4" cols="50" required></textarea></textarea>
                 </div>
 
                 <div class="status">
-                    <select name="status" class="event-status" id = "event-type" >
-                        <option value="draft">Draft</option>
-                        <option value="past">Past</option>
-                        <option value="published">Published</option>
-                    </select>
-
-                    <select name="status" class="event-status" id="event-category">
-                        <option value="draft">Draft</option>
-                        <option value="past">Past</option>
-                        <option value="published">Published</option>
-                    </select>
+                                
+                    <input type="text" placeholder="amount $ i.e 40.00" class="event-status" id="event-cost">
+                    <input type="file" name="image" accept="image/png, image/jpeg" name="status" class="event-status" id = "event-img" >
+                       
+                       
+                  
                 </div>
 
 
@@ -85,13 +88,13 @@
                         event and let attendees know where to 
                         show up.</p></div>
                     <div id="three">
-                        <button class="list-button" ><p>Venue</p></button>
-                        <button class="list-button" ><p>Online event</p></button>
-                        <button class="list-button" ><p>To be announced</p></button>
+                        <button class="list-button" id="venue">Venue</button>
+                        <button class="list-button" id="online">Online event</button>
+                        <button class="list-button" id="future" >To be announced</button>
                     </div>
                     <div class="">
                        <!-- ? <label for="title">Location</label> -->
-                        <input type="text" class="search-input" placeholder="Location" name="title" id="event-title">
+                        <input type="text" class="search-input" placeholder="Location" name="title" id="event-address" required>
                     </div>
                 </div>
             </div>
@@ -104,8 +107,8 @@
                     </p>
                 </div>
                     <div id="three">
-                        <button class="list-button" ><p>Single Event</p></button>
-                        <button class="list-button" ><p>Recurring Event</p></button>
+                        <button class="list-button-time " id="single" ><p>Single Event</p></button>
+                        <button class="list-button-time" id="reoccurring" ><p>Recurring Event</p></button>
                         
                     </div>
                     <div class="choose-date">
@@ -113,12 +116,12 @@
                             <div class="start">
                                 <div class="time-container">
                                     <label for="start-date">Event starts</label>
-                                    <input type="date" class="time-input" placeholder="Event starts" name="start-date" id="event-date-start">
+                                    <input type="date" class="time-input" placeholder="Event starts" name="start-date" id="event-date-start" required>
                                 </div>
                                 <div class="time-container">
                                     
                                <label for="start-time">Time</label>
-                               <input type="date" class="time-input" placeholder="Start time" name="state-time" id="event-time-start">
+                               <input type="time" class="time-input" placeholder="Start time" name="state-time" id="event-time-start" required>
   
                                 </div>
                                
@@ -126,11 +129,11 @@
                            <div class="end">
                             <div class="class-container">
                                 <label for="end-date">Event ends</label>
-                                <input type="date" class="time-input" placeholder="Event ends" name="end-date" id="event-date-end">
+                                <input type="date" class="time-input" placeholder="Event ends" name="end-date" id="event-date-end" required>
                             </div>
                            <div class="class-container">
                             <label for="end-time">Time</label>
-                            <input type="date" class="time-input" placeholder="end time" name="end-time" id="event-time-start">
+                            <input type="time" class="time-input" placeholder="end time" name="end-time" id="event-time-end" required>
                            </div>
                           
                            </div>
@@ -155,12 +158,15 @@
             <div class="empty"> </div>
            
             <div class="create">
-                <button class="calendar-button" ><p>Discard</p></button>
-                <button class="create-button"><p>Create</p></button>
+                <button class="calendar-button" id="button-discard" ><p>Discard</p></button>
+                <button class="create-button" id="button-create"><p>Create</p></button>
             </div>
         </div>
 
     </div>
-    
+    <script type="module" src="/New folder/create_event/create_event.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   
 </body>
 </html>

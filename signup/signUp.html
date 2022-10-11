@@ -13,39 +13,39 @@
     <div class="container-root">
         <div class="top">
             <div class="form">
-                <form action="" class="eform">
+                <form action=""  class="eform">
                     <div class="form-container">
 
                         <h2 id="company-name">eventbridge</h2>
                         <h1 class="create-header"><strong><b>Create an account</b></strong></h1>
 
                         <label for="email"></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
+                        <input type="text" placeholder="Enter Email" name="email" class="email" required>
 
                         <label for="uname"></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
+                        <input type="text" placeholder="Enter Username" name="uname" class="username" required>
 
                         <label for="psw"><b></b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="password" placeholder="Enter Password" name="psw"  class="pass1"required>
 
                         <div class="names">
 
                             <label for="first"></label>
-                            <input type="text" placeholder="First Name" name="first" required>
+                            <input type="text" placeholder="First Name" name="first" class= "first"required>
 
                             <label for="last"></label>
-                            <input type="text" placeholder="Last Name" name="last" required>
+                            <input type="text" placeholder="Last Name" name="last" class ="last" required>
 
 
                         </div>
 
                         <label for="psw2"><b></b></label>
-                        <input type="password" placeholder="Confirm Password" name="psw2" required>
-                        <span class="psw">Forgot <a href="#">password?</a></span>
+                        <input type="password" placeholder="Confirm Password" name="psw2" class= "pass2" required>
+                        <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
 
-                        <button type="submit">Create account</button>
+                        <button type="button" class="submit">Create account</button>
 
-                        <span><a href="/signup/loginPage/login.html">Log in</a></span>
+                        <span><a href="/New folder/loginPage/login.html">Log in</a></span>
 
 
 
@@ -54,7 +54,7 @@
                 </form>
             </div>
             <div class="img-hero">
-                <img src="/resources/img/pexels-matheus-bertelli-2608517 (1).jpg" alt="" class="hero_img">
+                <img src="/New folder/resources/img/pexels-matheus-bertelli-2608517 (1).jpg" alt="" class="hero_img">
             </div>
 
         </div>
@@ -133,6 +133,10 @@
         </footer>
 
     </div>
+   
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="signup.js"></script>
 
 </body>
 

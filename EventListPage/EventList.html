@@ -1,128 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Mulish"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="container-root">
-        <div class="vertical">
-            <!-- <nav class="vertical-nav">
+      <div class="vertical">
+        <nav class="vertical-nav">
                 <ul class="nav-v-list">
-                    <li>logo</li>
-                    <li>calender</li>
-                    <li>Order</li>
-                    <li>Marketing</li>
-                    <li>Reports</li>
-                    <li>Finance</li>
-                    <li>Organization Settings</li>
+                  <li><img src="../resources/img/arrow/home (1).svg" alt="" class="icon-side" id="home-nav"></li>
+                    <li> <img src="../resources/img/arrow/calender.svg" alt="" class="icon-side" id="calendar-nav"></li>
+                    <li><img src="../resources/img/arrow/order.svg" alt="" class="icon-side" id="order-nav"></li>
+                    <li><img src="../resources/img/arrow/finance.svg" alt="" class="icon-side" id="finance-nav"></li>
+                   
+                   
                 </ul>
 
-                <div>Help Center</div>
-            </nav> -->
-        </div>
-        <div class="horizontal">
-            <nav class="navbar">
-                <div class="nav-container">
-                    <div class="logo">eventbridge</div>
-    
-                    <ul class="nav-items">
-                       
-                        <li>
-                            <a href="">your username</a>
-                        </li>
-                    </ul>
+                <div>  <li><img src="../resources/img/arrow/settings.svg" alt="" class="icon-side"></li>
                 </div>
             </nav>
-            
-            <div class="categories">
-                <div class="heading">
-                    <h1>Events</h1>
-                </div>
-                <nav class="navbar-categories">
-                    <ul class="nav-items">
-                        <li id="first-item">
-                            <a href="">Events</a>
-                        </li>
-                        <li>
-                            <a href="">Collections</a>
-                        </li>
-                    </ul>
-                </nav>
-    
-            </div>
-    
-            <div class="create-categories">
-                <div class="empty"> </div>
-                <div class="list-calender">
-                    <button class="list-button" ><p>List</p></button>
-                    <button class="calendar-button" ><p>Calendar</p></button>
-                </div>
-                <div class="create">
-                    <button class="create-button" id="create-btn" onclick=""><p>Create Event</p></button>
-                </div>
-            </div>
+      </div>
+      <div class="horizontal">
+        <nav class="navbar">
+          <div class="nav-container">
+            <div class="logo">eventbridge</div>
 
-            <div class="search-container">
-                <div class="searchbar">
-                    <input type="text" class="search-input" placeholder="Search events">
-                </div>
+            <ul class="nav-items">
+              <li id="username">your username</li>
+            </ul>
+          </div>
+        </nav>
 
-                <div class="status">
-                    <select name="status" id="event-status">
-                        <option value="draft">Draft</option>
-                        <option value="past">Past</option>
-                        <option value="published">Published</option>
-                    </select>
-                </div>
-
-            </div>
-
-            <div class="event-list">
-                <div class="list-heading">
-                    <div>Event</div>
-                    <div id="three">
-                        <div>Sold</div>
-                        <div>Gross</div>
-                        <div>Status</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="event-list-lower">
-                <div class="list-heading">
-                    <div id ="line">
-                        <div class="date">
-                            <div class="mon">SEP</div>
-                            <div class="day">20</div>
-                        </div>
-                      
-                            <img src="/resources/img/images.svg" alt="">
-
-                            <div class="event-details">
-                                <p class="title">dauda</p>
-                                <p class="type">Online event</p>
-                                <p class="date-time">Tuesday, September 2022</p>
-                            </div>
-                       
-                    </div>
-
-                    <div id="three">
-                        <div>0/0</div>
-                        <div>$0.00</div>
-                        <div>Draft</div>
-                    </div>
-                    
-                </div>
-                <div class="more-container"><img src="" alt="" class="more"></div>
-            </div>
-           
+        <div class="categories">
+          <div class="heading">
+            <h1 id="test">Events</h1>
+          </div>
+          <nav class="navbar-categories">
+            <ul class="nav-items">
+             
+              <li id="registered-events">
+                <a href="" >Registered Events</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        
+
+        <div class="create-categories">
+          <div class="empty"></div>
+          <div class="list-calender">
+            <button class="list-button"><p>List</p></button>
+            <button class="calendar-button"><p>Calendar</p></button>
+          </div>
+          <div class="create">
+            <button class="create-button" id="create-btn" >
+              <p>Create Event</p>
+            </button>
+          </div>
+        </div>
+
+        <div class="search-container">
+          <div class="searchbar">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search events"
+            />
+          </div>
+
+          <div class="status">
+            <select name="status" id="event-status">
+              <option value="draft">Draft</option>
+              <option value="past">Past</option>
+              <option value="published">Published</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="event-list">
+          <div class="list-heading">
+            <div>Event</div>
+            <div id="three">
+              <div>Sold</div>
+              <div>Gross</div>
+              <div>Status</div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="list-event">
+          <li>
+            <!-- <div class="event-list-lower">
+              <div class="list-heading">
+                <div id="line">
+                  <div class="date">
+                    <div class="mon">SEP</div>
+                    <div class="day">20</div>
+                  </div>
+
+                  <img src="../resources/img/images.svg" alt="" />
+
+                  <div class="event-details">
+                    <p class="title">dauda</p>
+                    <p class="type">Online event</p>
+                    <p class="date-time">Tuesday, September 2022</p>
+                  </div>
+                </div>
+
+                <div id="three">
+                  <div>0/0</div>
+                  <div>$0.00</div>
+                  <div>Draft</div>
+                </div>
+              </div>
+              <div class="more-container">
+                <img src="" alt="" class="more" />
+              </div>
+            </div>
+          </li> -->
+        </ul>
+      </div>
     </div>
-    
-</body>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <script type="module" src="/New folder/EventListPage/eventlist.js"></script>
+  </body>
 </html>

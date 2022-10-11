@@ -9,17 +9,33 @@ body{
 }
 
 *{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Mulish';font-size: 15px;;
   
     margin: 0;
     padding: 0;
     max-width: 100vw;
 }
 
+#user-nav{
+    background-color: green;
+    color: #fff;
+    padding:12px;
+    border-radius: 20px;
+   
+}
+
+#user-nav a:hover{
+    background-color: green;
+    color: #fff;
+    padding:12px;
+    border-radius: 20px;
+}
+
 .container-root{
     height: auto;
     display: flex;
     flex-direction: column;
+    
     
   
 }
@@ -73,8 +89,42 @@ ul{list-style-type: none;}
    
 }
 
-.navbar ul li, .navbar-categories ul li{
-    margin-left: 20px;
+.navbar-categories ul li{
+    /* margin-left: 20px; */
+    
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /* padding-block: 100%; */
+   
+}
+a:hover {
+    /* background-color: #948f9c;
+    border-radius: 15px;
+    color: #fff; */
+   
+}
+.navbar-categories ul li:hover, .navbar-categories ul li a:hover {
+    background-color: #948f9c;
+    border-radius: 15px;
+    color: #fff;
+   
+}
+
+.heading a:hover{
+    text-decoration: none;
+}
+.navbar ul li{
+   
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 22px;
+    padding-top: 22px;
+}
+
+.navbar ul li:hover{
+  /* background-color: #948f9c; */
 }
 
 a{
@@ -95,24 +145,29 @@ a{
 }
 
 .hero_img{
-    max-width: 100vw;
+    height: 100%;
    
 }
 
+
+
  .img-hero-container{
-    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
     margin-bottom: 10px;
-    z-index: 1;
+    background-color: #39364f;
+    
+
   
 }
 
-/* .categories{
-    background-color: aqua;
-    width: 100%;
-    height: 100%;
-} */
+.categories{
+   
+}
 .categories .heading{
-    margin-top: 5%;
+    
     margin-bottom: 50px;
     width: 80vw;
     display: flex;
@@ -201,6 +256,10 @@ div .wrapper{
     width: 100%;
   }
 
+  .wrapper div:hover{
+    border: 1px solid #948f9c;
+  }
+
   div .event-wrapper{
     display: flex;
     background-color:#fff;
@@ -227,9 +286,7 @@ div .event-card{
     height: auto;
 }
 
-.wrapper div{
 
-}
 
 .trending-categories .wrap-img{
     width: 20px;
@@ -352,6 +409,48 @@ div .event-card{
 
     .more-container{
         margin-bottom: 150px;
+    }
+
+    button{
+        border: 1px solid #948f9c;
+    }
+
+    * {box-sizing:border-box}
+
+    * Slideshow container */
+    .slideshow-container {
+    
+      /* position: relative; */
+      margin: auto;
+      
+    }
+    
+    /* Hide the images by default */
+    .mySlides {
+      /* display: none; */
+      
+    }
+    
+   
+  
+  
+    
+   
+    
+  
+    .active, .dot:hover {
+      background-color: #717171;
+    }
+    
+    /* Fading animation */
+    .fade {
+      animation-name:fade;
+      animation-duration: 3.5s;
+    }
+    
+    @keyframes fade {
+      from {opacity: .1}
+      to {opacity: 1}
     }
 
 
