@@ -5,7 +5,7 @@
     eventID: obj.id,
     organiserID: obj.organiserID,
     eventName: obj.eventName,
-    organiserName:obj.organiserID,
+    organiserName:obj.organiserName,
     location: obj.location,
     startDate: obj.startDate,
     startTime: obj.startTime,

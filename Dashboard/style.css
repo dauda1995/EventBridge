@@ -47,6 +47,9 @@ body{
     height: 100%;
     margin-left: 20px;
     margin-right: 20px;
+    position: sticky !important;
+    top: 0 !important;
+
 }
 .navbar-categories{
     background-color: black;
@@ -60,7 +63,9 @@ ul{list-style-type: none;}
     height:60px;
     width: 100%;
     background-color: #ffffff;
-
+    position: sticky !important;
+    top: 0 !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .navbar-categories{
@@ -264,17 +269,25 @@ div .wrapper{
     display: flex;
     background-color:#fff;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content:first center;
     margin-top: 20px;
 
   }
 
   div.event-card-details{
-    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
   }
 
 
 div .event-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 20px;
     width: 22%;
     margin-bottom: 25px;   
     max-height: auto;
@@ -284,6 +297,11 @@ div .event-card{
 .event-card .wrap_img{
     width: 100%;
     height: auto;
+}
+
+.event-card{
+    padding-bottom: 20px;
+    z-index: 5;
 }
 
 
@@ -322,7 +340,7 @@ div .event-card{
 
 .event-card .event-host{
     margin: 0;
-    margin-top: 10px;
+   
     font-weight: bold;
     font-size:13px;
     text-decoration: none;
@@ -453,4 +471,15 @@ div .event-card{
       to {opacity: 1}
     }
 
+
+
+    .form-bo input{
+    padding:9px; 
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #2b4657;
+    color: #fff;
+    border: none;
+    }
+  
 

@@ -1,0 +1,167 @@
+{
+  "liveServer.settings.ignoreFiles": [
+    "**"
+  ],
+  "users": [
+    {
+      "email": "dauda1995@yahoo.co.uk",
+      "username": "dauda",
+      "firstname": "dauda",
+      "lastname": "dauda",
+      "password": "dauda",
+      "id": 1
+    },
+    {
+      "email": "dauda933@gmail.com",
+      "username": "charles",
+      "firstname": "dauda",
+      "lastname": "oziegbe",
+      "password": "Abuadschool1",
+      "id": 3
+    },
+    {
+      "email": "dauda.dauda@gmail.com",
+      "username": "dauda",
+      "firstname": "dauda",
+      "lastname": "dauda",
+      "password": "Abuadschool1",
+      "id": 4
+    },
+    {
+      "email": "dauda1995@yah",
+      "username": "asd",
+      "firstname": "asdlkd",
+      "lastname": "dflgkj",
+      "password": "aaa",
+      "id": 5
+    },
+    {
+      "email": "ddffdlk",
+      "username": "sfvlj",
+      "firstname": "d,m",
+      "lastname": "cfd,m",
+      "password": "sss",
+      "id": 6
+    }
+  ],
+  "events": [
+    {
+      "eventID": "",
+      "organiserID": "1",
+      "eventName": "meet&greet",
+      "organiserName": "dauda",
+      "location": "landmark center",
+      "startDate": "2022-10-13",
+      "startTime": "23:59",
+      "endDate": "2022-10-18",
+      "endtime": "",
+      "type": "",
+      "endTime": "22:03",
+      "eventType": "online",
+      "id": 1
+    },
+    {
+      "eventID": "",
+      "organiserID": "",
+      "eventName": "dauda",
+      "organiserName": "xaua",
+      "location": "scusc",
+      "startDate": "2022-10-19",
+      "startTime": "15:27",
+      "endDate": "2022-10-19",
+      "endtime": "",
+      "type": "",
+      "endTime": "20:25",
+      "eventType": "venue",
+      "id": 2
+    },
+    {
+      "eventID": "",
+      "organiserID": "1",
+      "eventName": "dauda",
+      "organiserName": "dauda",
+      "location": "dauda",
+      "startDate": "2022-11-03",
+      "startTime": "15:32",
+      "endDate": "2022-10-10",
+      "endtime": "",
+      "type": "",
+      "endTime": "15:34",
+      "eventType": "venue",
+      "id": 3
+    },
+    {
+      "eventID": "",
+      "organiserID": "1",
+      "eventName": "eko innovation event",
+      "organiserName": "lagos govt",
+      "location": "oriental hotel",
+      "startDate": "2022-10-06",
+      "startTime": "22:17",
+      "endDate": "2022-10-11",
+      "endtime": "",
+      "type": "",
+      "endTime": "23:24",
+      "eventType": "venue",
+      "id": 4
+    },
+    {
+      "eventID": "",
+      "organiserID": "",
+      "eventName": "meet and greet tech connect 2.0",
+      "organiserName": "interswitch group",
+      "location": "Eko atlantic hotel and suites",
+      "startDate": "2022-10-12",
+      "startTime": "23:04",
+      "endDate": "2022-10-12",
+      "endtime": "",
+      "type": "",
+      "endTime": "14:04",
+      "eventType": "online",
+      "summary": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+      "cost": "65.00",
+      "imgUrl": "C:\\fakepath\\Annotation 2022-08-19 101333.png",
+      "id": 5
+    },
+    {
+      "eventID": "",
+      "organiserID": "1",
+      "eventName": "dlkfdds",
+      "organiserName": "df,.fds",
+      "location": ";,.fsad;l",
+      "startDate": "2022-10-26",
+      "startTime": "20:47",
+      "endDate": "2022-10-19",
+      "endtime": "",
+      "type": "",
+      "endTime": "20:48",
+      "eventType": "future",
+      "summary": "dsf.,vsd.,f",
+      "cost": "dsf.,f",
+      "imgUrl": "C:\\fakepath\\4.png",
+      "id": 6
+    }
+  ],
+  "tickets": [
+    {
+      "ticketId": " ",
+      "eventId": "1",
+      "customerId": "1",
+      "dateCreated": "Sat Oct 08 2022 21:52:51 GMT+0100 (West Africa Standard Time)",
+      "id": 1
+    },
+    {
+      "ticketId": " ",
+      "customerId": "1",
+      "dateCreated": "Sat Oct 15 2022 00:40:55 GMT+0100 (West Africa Standard Time)",
+      "id": 2
+    },
+    {
+      "ticketId": " ",
+      "customerId": "1",
+      "dateCreated": "Sat Oct 15 2022 00:41:09 GMT+0100 (West Africa Standard Time)",
+      "id": 3
+    }
+  ],
+  "temp": {}
+}

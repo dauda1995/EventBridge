@@ -92,11 +92,11 @@ $(document).ready(function () {
 
   $('#events-list').click(function (e) { 
     e.preventDefault();
-    window.location = window.location = "/New folder/EventListPage/EventList.html";
+    window.location = window.location = "/EventListPage/EventList.html";
   });
 
   $('#create-event').click(function (e) { 
     e.preventDefault();
-    window.location = "/New folder/create_event/createEvent.html";
+    window.location = "/create_event/createEvent.html";
   });
 });
