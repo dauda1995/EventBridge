@@ -1,20 +1,39 @@
 import getUserDetail from "../exportFunctions/getUser.js";
 import { selectButton } from "../exportFunctions/helperFunctions.js";
-import {USERID} from "../model/keys.js"
+import {USERID, CREATE_STATUS, CREATE_STATE, COMPLETE, INCOMPLETE, EVENT_LOCATION_KEY} from "../model/keys.js"
+import {event} from "../model/event.js"
 
 $(document).ready(function () {
-    let obj = {
-        eventID:'',
-        organiserID: '',
-        eventName: '',
-        organiserName:'',
-        location: '',
-        startDate: '',
-        startTime: '',
-        endDate: '',
-        endtime: '',
-        type: ''
-        }
+    let obj = {}
+
+
+    function getsession(){
+      obj = JSON.parse(sessionStorage.getItem(CREATE_STATUS));
+      let obj2 = JSON.parse(sessionStorage.getItem(EVENT_LOCATION_KEY));
+
+      $("#event-title").val(obj.eventName);
+      $("#event-organiser").val( obj.organiserName);
+     $("#event-address").val(obj2.address);
+  
+     $("#event-date-start").val(obj.startDate);
+     $("#event-time-start").val(obj.startTime);
+  
+     $("#event-date-end").val(obj.endDate);
+     $("#event-time-end").val(obj.endTime);
+     $('#event-summary').val(obj.summary);
+     $('#event-cost').val(obj.cost);
+     $('#event-img').val(obj2.img);
+     $("#event-type").val()
+
+      
+    }
+    if(sessionStorage.getItem(CREATE_STATE) ==INCOMPLETE){
+      getsession();
+
+    }
+
+
+
 
 
     
@@ -50,13 +69,56 @@ $(document).ready(function () {
   $('.list-button').click(function (e) { 
     e.preventDefault();
     location = e.target.id;
+    if(location == "venue"){
+     
+      let eventInputs = JSON.stringify(setSession())
+      sessionStorage.setItem(CREATE_STATE, INCOMPLETE)
+      sessionStorage.setItem(CREATE_STATUS, eventInputs)
+      window.location = "../GoogleApi/index.html"
+    }
   });
+
+  
 
   $('.list-button-time').click(function (e) { 
     e.preventDefault();
     dateTime = e.target.id
     
+    
   });
+
+  function setSession(){
+
+    let eventName = $("#event-title").val();
+    let organiserName = $("#event-organiser").val();
+    let address = $("#event-address").val();
+  
+    let startDate = $("#event-date-start").val();
+    let startTime = $("#event-time-start").val();
+  
+    let endDate = $("#event-date-end").val();
+    let endTime = $("#event-time-end").val();
+    let summary = $('#event-summary').val();
+    let cost = $('#event-cost').val();
+    let img = $('#event-img').val();
+    let eventType = $("#event-type").val()
+
+    obj.eventID = "";
+    obj.eventName = eventName;
+    obj.organiserName = organiserName;
+    obj.location = address;
+    obj.startDate = startDate;
+    obj.startTime = startTime;
+    obj.endDate = endDate;
+    obj.endTime = endTime;
+    obj.eventType = location;
+    obj.summary = summary;
+    obj.cost = cost;
+    obj.imgUrl = img;
+
+    return obj;
+
+  }
 
 
   $("#button-create").click(function (e) {

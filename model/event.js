@@ -14,7 +14,9 @@
     type: obj.type,
     cost: obj.cost, 
     summary: obj.summary,
-    imgUrl:obj.imgUrl
+    imgUrl:"", 
+    lat: "",
+    lng:""
     }
 
     return e
