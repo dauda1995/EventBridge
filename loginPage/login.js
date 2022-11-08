@@ -1,93 +1,84 @@
+
+import { BASE_URL, setBearer, sweetAlrtSuccess, token, URL_SIGNIN } from "../model/keys.js";
+import { user } from "../model/user.js";
+import { swtAlrt } from "../services/EventServices.js";
+import {LoginService, USER_API_BASE_URL} from "../services/LoginService.js";
+// import axios from "axios";
+
 $('document').ready(function(){
-    localStorage.clear()
-    let arr = []
-    function usersInfo(email, username, password) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-    }
+    // localStorage.clear()
     
-    function find_email(str, psword) {
-        let status = false;
-        for (let i = 0; i < arr.length; i++) {
-            if ((arr[i].email == str) && (arr[i].password == psword)) {
-                // alert('this user exists')
-                status = true;
-                break;
+    const getUsers = (data) => {
 
-            } else {
-                // alert('still checking')
-                status = false;
-            }
-        }
-        return status;
+        $.post(URL_SIGNIN, data,
+            function (data, textStatus, jqXHR) {
+                
+                const users = data;
+
+                console.log(data.username)
+                sessionStorage.setItem(token, JSON.stringify(data))
+               
+                console.log(sessionStorage.getItem(token));
+               
+                // sweetAlrtSuccess("welcome!!", "Login Successful" + textStatus, "../Dashboard/dashboard.html");
+
+                let alrt = async() =>{
+                    return await swtAlrt('success', 'Login successful', 'success').then(() =>{
+                        window.location = "../Dashboard/dashboard.html";
+                    })
+                }
+
+                alrt();
+               
+                // swal({
+                //     title: "Login Successful!",
+                //     text: "Welcome",
+                //     icon:"success",
+                //     button:false
+                
+                //   }).then((result) => {
+                    
+                   
+                //     window.location = "../Dashboard/dashboard.html"
+                    
+                //   })
+
+                ////////////////
+
+
+            //     swal({
+            //         title: "Login Successful!",
+            //         text: "Welcome",
+            //         icon:"success",
+            //         button:false},
+            //         function(){
+            //             console.log('dddddd')
+            //            window.location = "../Dashboard/dashboard.html"
+                       
+                    
+            //  });
+                
+               
+            },
+
+        );
     }
-
-    function ret_email(str, psword) {
-      
-        for (let i = 0; i < arr.length; i++) {
-            if ((arr[i].email == str) && (arr[i].password == psword)) {
-                // alert('this user exists')
-                return arr[i];
-
-            } 
-        }
-       
-    }
-
 
     $('.submit').click(function(){
       
+        console.log("log in to user")
         let username = $('.email').val();
         let password = $('.password').val();
 
-        if((password.length !== 0) && (username.match( /^[^\s@]+@[^\s@]+\.[^\s@]+$/))){
+        if((password.length !== 0) && (username.length !==0)){
 
-            $.get('http://localhost:3000/users', function(data, status){
-                $.each(data, function(i, single){
-                    arr.push({
-                        id:single.id,
-                        email:single.email,
-                        username: single.username,
-                        password: single.password
-                    })
-                })
+            let obj = {
+                "password": password,
+                "firstNameOrEmail": username
+            }
 
-                if(find_email(username, password) == true){
-                    let obj = ret_email(username, password);
-                    localStorage.setItem('userid', obj.id );
-                   
-                 
-                    swal({
-                        title: "login success!",
-                        icon:"success",
-                        button:false
-                       });
-                    
+           getUsers(obj);
 
-                    arr = []
-                    window.location ="../Dashboard/dashboard.html";
-                }else{
-
-                    swal({
-                        title: "login failed!",
-                        text: "user is not registered",
-                        icon:"error"
-                       });
-                    arr = []
-                }
-
-            })
-           
-
-        }else{
-
-           swal({
-            title: "login failed!",
-            text: "incorrect username or password",
-            icon:"error",
-            button:false
-           });
         }
     })
 

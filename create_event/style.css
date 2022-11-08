@@ -411,7 +411,7 @@ button:hover, #event-type:hover{
 
 input:hover, textarea:hover, select:hover{
     border:2px Solid #4169e7;
-    color: #4169e7;
+    /* color: #4169e7; */
 
 }
 

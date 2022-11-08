@@ -1,26 +1,27 @@
 
-   export const event =(obj)=>{ 
-
-    let e ={
-    eventID: obj.id,
-    organiserID: obj.organiserID,
-    eventName: obj.eventName,
-    organiserName:obj.organiserName,
-    location: obj.location,
-    startDate: obj.startDate,
-    startTime: obj.startTime,
-    endDate: obj.endDate,
-    endtime: obj.endtime,
-    type: obj.type,
-    cost: obj.cost, 
-    summary: obj.summary,
+   export const event ={
+    // eventID: obj.eventID,
+    organiserID: "",
+    eventName: "",
+    organiserName:"",
+    startDate: "",
+    startTime: "",
+    endDate: "",
+    endtime: "",
+    type: "",
+    cost: "", 
+    summary: "",
     imgUrl:"", 
-    lat: "",
-    lng:""
+   
+    address:{
+        lat: "",
+        lng:"",
+        location: ""
+    },
+    categories:{
+        preference:""
     }
-
-    return e
-}
+    }
 
 
 

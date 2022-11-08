@@ -42,6 +42,21 @@
       "lastname": "cfd,m",
       "password": "sss",
       "id": 6
+    },
+    {
+      "organiserID": "3",
+      "eventName": "dslmdfd",
+      "organiserName": "sfdlfdfd;lk",
+      "location": "",
+      "startDate": "",
+      "startTime": "",
+      "endDate": "",
+      "endTime": "",
+      "eventType": "",
+      "summary": "slffdlf.,",
+      "cost": "",
+      "imgUrl": "",
+      "id": 7
     }
   ],
   "events": [

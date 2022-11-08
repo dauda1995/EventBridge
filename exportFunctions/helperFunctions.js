@@ -4,7 +4,7 @@ export function selectButton(buttonIdArr, buttonClick){
     $(buttonClick).click(function (e) { 
         e.preventDefault();
         let venue;
-        console.log(e.target.id)
+        // console.log(e.target.id)
 
         for(let i= 0; i<buttonIdArr.length; i++){
             if(e.target.id == buttonIdArr[i]){

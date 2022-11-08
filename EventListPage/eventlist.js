@@ -1,23 +1,36 @@
 import getUserDetail from "../exportFunctions/getUser.js";
-import { EVENTID, SWEETALERT } from "../model/keys.js";
+import { EVENTID, SWEETALERT, BASE_URL, URL_EVENTS, token } from "../model/keys.js";
+import { user } from "../model/user.js";
+import { getEventsFromDatabase, swtAlrt } from "../services/EventServices.js";
 
 $(document).ready(function () {
   let events = [];
-  let obj = getUserDetail("#username");
-  let userid = localStorage.getItem("userid");
+  // let obj = getUserDetail("#username");
+  let userid = JSON.parse(sessionStorage.getItem(token));
+
+  console.log(userid.id)
+
 
   const sweet = sessionStorage.getItem(SWEETALERT);
   console.log(sweet);
   if (sweet == "success") {
-    swal({
-      title: "successful!",
-      text: "event successfully created",
-      icon: "success",
-      button: false,
-      timer: 1000,
-    });
 
-    sessionStorage.setItem(SWEETALERT, '')
+    let alrt = async() =>{
+      return await swtAlrt('success', 'event successfully created', 'success').then(() =>{
+        sessionStorage.setItem(SWEETALERT, '')
+      })
+  }
+  alrt();
+    // swal({
+    //   title: "successful!",
+    //   text: "event successfully created",
+    //   icon: "success",
+    //   button: false,
+    //   timer: 1000,
+    // });
+    
+
+    
   }
 
   let match = (str1, str2) => {
@@ -33,24 +46,34 @@ $(document).ready(function () {
   // const [Dy, month, year] = d.split(' ')
   // console.log(year)
 
-  
-  $.get(
-    `http://localhost:3000/events`,
-    userid,
-    function (data, textStatus, jqXHR) {
-      $.each(data, function (indexInArray, valueOfElement) {
-        if (match(valueOfElement.organiserID, userid)) {
-          events.push(valueOfElement);
-          console.log("valid");
-          appendList(valueOfElement);
-        } else {
-          console.log("invalid");
-        }
+  let response = async() =>{
+    return await getEventsFromDatabase(`${URL_EVENTS}/byorganiser/${userid.id}`).then((res) =>{
+      $.each(res, function (indexInArray, valueOfElement) { 
+        appendList(valueOfElement);
       });
 
       moreDetails();
-    }
-  );
+    })
+  }
+
+  response();
+
+  // $.get(
+  //   `${URL_EVENTS}/byOrganiser/${userid.id}`,
+  //   function (data, textStatus, jqXHR) {
+  //     $.each(data, function (indexInArray, valueOfElement) {
+  //       if (match(valueOfElement.organiserID, userid)) {
+  //         events.push(valueOfElement);
+  //         console.log("valid");
+  //         appendList(valueOfElement);
+  //       } else {
+  //         console.log("invalid");
+  //       }
+  //     });
+
+  //     moreDetails();
+  //   }
+  // );
 
   let moreDetails = () => {
     $(".more").click(function (e) {
@@ -94,7 +117,7 @@ $(document).ready(function () {
           </div>
 
           <div class="more-container">
-          <img src ="../resources/img/arrow/front-arrow.svg" alt="" class="more" id=${single.id}/>
+          <img src ="../resources/img/arrow/front-arrow.svg" alt="" class="more" id=${single.eventID}/>
         </div>
         
         </div>

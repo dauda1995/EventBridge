@@ -87,7 +87,7 @@ $(document).ready(function () {
 
             <div id="three">
               <div>0/0</div>
-              <div>$0.00</div>
+              <div>${single.cost}</div>
               <div id="eventType">${single.eventType}</div>
             </div>
           </div>

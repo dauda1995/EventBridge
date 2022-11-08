@@ -1,24 +1,34 @@
 import { event, getDate, getTime } from "../model/event.js";
-import {EVENTID} from "../model/keys.js"
+import {EVENTID, token, BASE_URL, URL_EVENTS, URL_SIGNIN} from "../model/keys.js"
+import { user } from "../model/user.js";
 
 $(document).ready(function () {
   let obj = {};
 
-  let userid = localStorage.getItem("userid");
-  console.log(userid);
+  
+  let userid = JSON.parse(sessionStorage.getItem(token));
 
-  $.ajax({
-    method: "GET",
-    url: `http://localhost:3000/users/${userid}`,
-  }).done(function (data, msg) {
-    obj = data;
-    console.log(obj.id + " " + obj.firstname);
-    $("#user-nav").html(obj.firstname + " " + obj.lastname);
-  });
+ 
+    $("#user-nav").html(userid.username);
 
+    console.log(`Bearer ${userid.token}`)
   $.ajax({
+
     type: "GET",
-    url: `http://localhost:3000/events`,
+    url: URL_EVENTS,
+    mode:'cors',
+  //   contentType:'application/json',
+    headers: {
+       'Authorization': 'Bearer ' + userid.token,
+       'Access-Control-Allow-Origin': '*',
+       'Accept': 'application/json',
+
+      //  'Content-Type': 'application/json'
+        
+       
+
+  }
+ 
   }).done(function (data, msg) {
     console.log(data);
     $.each(data, function (indexInArray, valueOfElement) {
@@ -29,7 +39,7 @@ $(document).ready(function () {
       e.preventDefault();
       // e.stopPropagation
       console.log(e.target.id)
-      sessionStorage.setItem(EVENTID, e.target.id);
+      sessionStorage.setItem(EVENTID,JSON.stringify(e.target.id));
       window.location = '/eventPage/event.html'
       
     });
@@ -40,7 +50,7 @@ $(document).ready(function () {
     
     $('#event-wrapper').append(
         `
-      <div class="event-card" id = "${i.id}">
+      <div class="event-card" id = "${i.eventID}">
 
       <img src="../resources/img/pexels-burst-374780.jpg"  alt="" class="wrap_img">
       <div class="event-card-details">
@@ -50,10 +60,10 @@ $(document).ready(function () {
           "day"
         )}, ${i.startTime}</p>
       
-          <p class="event-host">${i.organiserName}</p>
+          <p class="event-host">${i.organiser.firstName}</p>
           <div class="form-bo">
       
-          <input type="button" class="submit" value="see details" id=${i.id}">
+          <input type="button" class="submit" value="see details" id="${i.eventID}">
       </div>
 
       </div>

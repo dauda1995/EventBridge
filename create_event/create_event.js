@@ -7,15 +7,33 @@ import {
   COMPLETE,
   INCOMPLETE,
   EVENT_LOCATION_KEY,
+  token,
+  URL_EVENTS
 } from "../model/keys.js";
 import { event } from "../model/event.js";
+import { user } from "../model/user.js";
 
 $(document).ready(function () {
-  let obj = {};
+  let obj = event;
+  let obj2; 
+  let userId= JSON.parse(sessionStorage.getItem(token));
+  console.log(userId)
+  $("#user-name").html(userId.username);
+
+  // let name = async ()=>{
+  //   let ret = await getUserDetail();
+
+  //   console.log('This is the ajax response' + ret);
+  // }
+
+  // name();
 
   function getsession() {
     obj = JSON.parse(sessionStorage.getItem(CREATE_STATUS));
-    let obj2 = JSON.parse(sessionStorage.getItem(EVENT_LOCATION_KEY));
+    obj2 = JSON.parse(sessionStorage.getItem(EVENT_LOCATION_KEY));
+    console.log(obj2)
+   
+    
 
     $("#event-title").val(obj.eventName);
     $("#event-organiser").val(obj.organiserName);
@@ -39,28 +57,28 @@ $(document).ready(function () {
   $("#button-discard").click(function (e) {
     e.preventDefault();
   });
-  let userid = localStorage.getItem(USERID);
-  getUserDetail("#user-name");
+  // let userid = localStorage.getItem(USERID);
+ 
 
-  $.get(
-    `http://localhost:3000/users/${userid}`,
-    function (data, textStatus, jqXHR) {
-      obj.organiserID = data.id;
+ 
+      obj.organiserID = userId.id;
       console.log(obj.organiserID);
-    }
-  );
+   
+  
 
   let locationArr = ["online", "future", "venue"];
   let location = "";
   selectButton(locationArr, ".list-button");
 
-  let dateTimeArr = ["single", "reoccurring"];
+  let dateTimeArr = ["science", "music", "Expos"];
   let dateTime = "";
   selectButton(dateTimeArr, ".list-button-time");
 
   $(".list-button").click(function (e) {
     e.preventDefault();
     location = e.target.id;
+
+    //event type whether online or physical
     obj.eventType = location;
 
     if (location == "venue") {
@@ -74,6 +92,7 @@ $(document).ready(function () {
   $(".list-button-time").click(function (e) {
     e.preventDefault();
     dateTime = e.target.id;
+    obj.categories = dateTime;
   });
 
   function setSession() {
@@ -89,7 +108,7 @@ $(document).ready(function () {
     let summary = $("#event-summary").val();
     let cost = $("#event-cost").val();
     let img = $("#event-img").val();
-    let eventType = $("#event-type").val();
+    let eventType = location;
 
     obj.eventID = "";
     obj.eventName = eventName;
@@ -99,10 +118,19 @@ $(document).ready(function () {
     obj.startTime = startTime;
     obj.endDate = endDate;
     obj.endTime = endTime;
-    obj.eventType = location;
+    obj.eventType = eventType;
+    console.log(obj.eventType)
     obj.summary = summary;
     obj.cost = cost;
     obj.imgUrl = img;
+
+    // if(eventType == 'venue'){
+    //   obj.address= {
+    //    lat: obj2.lat,
+    //    lng:obj2.lng,
+    //    location: obj2.address
+    //   }
+    // }
 
     return obj;
   }
@@ -128,7 +156,7 @@ $(document).ready(function () {
 
     let eventType = $("#event-type").val();
 
-    obj.eventID = "";
+  
     obj.eventName = eventName;
     obj.organiserName = organiserName;
     obj.location = address;
@@ -140,29 +168,55 @@ $(document).ready(function () {
     obj.summary = summary;
     obj.cost = cost;
     obj.imgUrl = img;
+    obj.categories = dateTime
+    console.log(eventType)
+    if(eventType == 'venue'){
+      obj.address= {
+       lat: obj2.lat,
+       lng:obj2.lng,
+       location: obj2.address
+      }
+    }else if(eventType == 'online'){
+      obj.address = {
+        location: address
+      }
+    }
 
     console.log(obj);
 
-    $.post("http://localhost:3000/events", obj, function (data, status) {
-      swal({
-        type: "success",
-        title: `event created`,
-        showConfirmButton: false,
-        timer: 5000,
-      });
+   
+    // $.ajax({
+    //   type: "POST",
+    //   url: `${URL_EVENTS}/createEvent/${userId.id}/events`,
+    //   data: obj,
+      
+    //   success: function (response) {
+    //     console.log("done" + JSON.stringify(response))
+    //   }
+    // });
 
-      if (status == "success") {
-        sessionStorage.setItem("sweetAlert", "success");
-        window.location = "../EventListPage/EventList.html";
-      } else {
-        swal({
-          type: "error",
-          title: `error`,
-          showConfirmButton: false,
-          timer: 5000,
-        });
-      }
-    });
+    // $.post(`http://localhost:3000/users`,
+    //  obj, 
+    //  function (data, status) {
+    //   swal({
+    //     type: "success",
+    //     title: `event created`,
+    //     showConfirmButton: false,
+    //     timer: 5000,
+    //   });
+
+    //   if (status == "success") {
+    //     sessionStorage.setItem("sweetAlert", "success");
+    //     window.location = "../EventListPage/EventList.html";
+    //   } else {
+    //     swal({
+    //       type: "error",
+    //       title: `error`,
+    //       showConfirmButton: false,
+    //       timer: 5000,
+    //     });
+    //   }
+    // });
   });
 
   $("#first-item").click(function (e) {

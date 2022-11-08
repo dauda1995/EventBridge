@@ -1,4 +1,4 @@
-import { EVENTID, USERID } from "../model/keys.js";
+import { EVENTID, USERID, URL_EVENTS, URL_TICKETS, token } from "../model/keys.js";
 import getUserDetail from "../exportFunctions/getUser.js";
 import { user } from "../model/user.js";
 import { event, getDate, getTime } from "../model/event.js";
@@ -7,27 +7,17 @@ import { tickets } from "../model/tickets.js";
 $(document).ready(function () {
   let eventDetails = {};
   let userDetails = {};
-  let userId = localStorage.getItem(USERID);
-  console.log(userId);
+  let userId = JSON.parse(sessionStorage.getItem(token));
+  console.log(userId)
+  let eventId = JSON.parse(sessionStorage.getItem(EVENTID));
+  console.log(`${URL_EVENTS}/getById/${eventId}`)
 
-  $.get(
-    `http://localhost:3000/users/${userId}`,
+  $.get(`${URL_EVENTS}/getById/${eventId}`,
     function (data, textStatus, jqXHR) {
-      userDetails = user(data);
-
-      $(".host").html(userDetails.firstname);
-    }
-  );
-
-  let username = getUserDetail("#user-name");
-
-  $.get(
-    `http://localhost:3000/events/${sessionStorage.getItem(EVENTID)}`,
-
-    function (data, textStatus, jqXHR) {
-      eventDetails = event(data);
+       eventDetails = event(data);
       console.log(eventDetails.location);
 
+      $("#user-name").html(userId.username);
       $(".mon").html(getDate(eventDetails.startDate, "month"));
       $(".day").html(getDate(eventDetails.startDate, "day"));
       $("#event-heading").html(eventDetails.eventName);
@@ -42,23 +32,60 @@ $(document).ready(function () {
 
       checkReservation();
     }
+  
   );
+  // $.get(
+  //   `${URL_EVENTS}/getById/${EVENTID}`,
+  //   function (data, textStatus, jqXHR) {
+  //     userDetails = user(data);
+
+  //     $(".host").html(userDetails.firstname);
+  //   }
+  // );
+
+  // let username = getUserDetail("#user-name");
+
+  // $.get(
+  //   `http://localhost:3000/events/${sessionStorage.getItem(EVENTID)}`,
+
+  //   function (data, textStatus, jqXHR) {
+  //     eventDetails = event(data);
+  //     console.log(eventDetails.location);
+
+  //     $(".mon").html(getDate(eventDetails.startDate, "month"));
+  //     $(".day").html(getDate(eventDetails.startDate, "day"));
+  //     $("#event-heading").html(eventDetails.eventName);
+  //     $(".event-cost").html(eventDetails.cost);
+  //     $("#event-headings").html(eventDetails.eventName);
+  //     $("#summary").html(eventDetails.summary);
+
+  //     $(".event-time").html(
+  //       getDate(eventDetails.startDate, "both") + " " + eventDetails.startTime
+  //     );
+  //     $(".event-location").html(eventDetails.location);
+
+  //     checkReservation();
+  //   }
+  // );
 
   $(".register").click(function (e) {
     e.preventDefault();
 
-    console.log(userDetails.id)
+    console.log(userId.id)
     let obj = {
-      customerId: userDetails.id,
+      customerId: userId.id,
       eventId: eventDetails.eventID,
       dateCreated: new Date(),
-      ticketId: "",
+      
     };
 
     let ticket = tickets(obj);
+    console.log(eventDetails.eventID)
+
+
 
     $.post(
-      `http://localhost:3000/tickets`,
+      `${URL_TICKETS}/save/${eventId}/${userId.id}/tickets`,
       ticket,
       function (data, textStatus, jqXHR) {
         if (textStatus == "success") {
@@ -69,6 +96,14 @@ $(document).ready(function () {
             button:false,
             timer: 2000
            });
+        }else{
+          swal({
+            title: "Reservation Failed",
+            text: "Unsuccessful",
+            // icon:"failed",
+            button:false,
+            timer: 2000
+           });
         }
       }
     );
@@ -76,15 +111,15 @@ $(document).ready(function () {
 
 
   let checkReservation = ()=>{
-    $.get(`http://localhost:3000/tickets`,
+    $.get(`${URL_TICKETS}/getbyIds/${userId.id}/${eventId}`,
       function (data, textStatus, jqXHR) {
-        $.each(data, function (indexInArray, valueOfElement) { 
-         
-           if(valueOfElement.eventId == eventDetails.eventID && valueOfElement.customerId == userDetails.id){
+       console.log(textStatus);
+           if(data!= null){
+            console.log("err" + data)
             $(".register").attr('disabled', true);
             $('#reg').html('Reserved');
            }
-        });
+        
       }
    
     );
