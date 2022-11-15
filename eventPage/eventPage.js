@@ -14,7 +14,8 @@ $(document).ready(function () {
 
   $.get(`${URL_EVENTS}/getById/${eventId}`,
     function (data, textStatus, jqXHR) {
-       eventDetails = event(data);
+      //  eventDetails = event(data);
+      eventDetails = data
       console.log(eventDetails.location);
 
       $("#user-name").html(userId.username);
@@ -24,6 +25,8 @@ $(document).ready(function () {
       $(".event-cost").html(eventDetails.cost);
       $("#event-headings").html(eventDetails.eventName);
       $("#summary").html(eventDetails.summary);
+      $(".hero-img").attr('src', eventDetails.imgUrl)
+      $('.img-event').attr('src', eventDetails.imgUrl)
 
       $(".event-time").html(
         getDate(eventDetails.startDate, "both") + " " + eventDetails.startTime
@@ -77,6 +80,9 @@ $(document).ready(function () {
       eventId: eventDetails.eventID,
       dateCreated: new Date(),
       
+      // eventId:obj.eventId,
+      //       customerId:obj.customerId,
+      //       dateCreated:obj.dateCreated
     };
 
     let ticket = tickets(obj);
@@ -96,6 +102,7 @@ $(document).ready(function () {
             button:false,
             timer: 2000
            });
+           checkReservation();
         }else{
           swal({
             title: "Reservation Failed",
@@ -111,14 +118,24 @@ $(document).ready(function () {
 
 
   let checkReservation = ()=>{
-    $.get(`${URL_TICKETS}/getbyIds/${userId.id}/${eventId}`,
+
+    console.log(userId.id, parseInt(eventId))
+    $.get(`${URL_TICKETS}/getbyIds/${userId.id}/${parseInt(eventId)}`,
       function (data, textStatus, jqXHR) {
-       console.log(textStatus);
-           if(data!= null){
+        try {
+
+
+          console.log(textStatus, data)
+          
+          if(data!= 'undefined'){
             console.log("err" + data)
             $(".register").attr('disabled', true);
             $('#reg').html('Reserved');
            }
+          
+        } catch (error) {
+          console.log(error);
+        }
         
       }
    

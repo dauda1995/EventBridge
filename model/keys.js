@@ -1,4 +1,5 @@
 export const EVENTID = "eventid";
+export const TICKETID = "ticketid";
 export const SWEETALERT = "sweetAlert";
 export const USERID = "userid";
 export const CREATE_STATUS = "status";
@@ -8,6 +9,7 @@ export const COMPLETE = "complete";
 export const INCOMPLETE = "incomplete";
 
 export const token = "token";
+export const signup2login = "sigup2login";
 
 export const BASE_URL = "http://localhost:8082/"; 
 export const URL_SIGNUP= `${BASE_URL}api/v1/auth/signup`;

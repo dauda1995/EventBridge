@@ -420,3 +420,24 @@ input:hover, textarea:hover, select:hover{
     color:#4169e7; 
     border:2px Solid #4169e7;
 }
+
+#user-name{
+    background-color: green;
+    color: #fff;
+    padding:12px;
+    border-radius: 20px;
+   
+}
+
+#user-name:hover{
+    background-color: rgb(10, 79, 40);
+    color: #fff;
+    padding:12px;
+    border-radius: 20px;
+}
+
+
+
+#event-img{
+    padding:12px;
+}

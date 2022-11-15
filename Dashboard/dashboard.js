@@ -9,7 +9,7 @@ $(document).ready(function () {
   let userid = JSON.parse(sessionStorage.getItem(token));
 
  
-    $("#user-nav").html(userid.username);
+    $("#username").html(userid.username);
 
     console.log(`Bearer ${userid.token}`)
   $.ajax({
@@ -31,74 +31,94 @@ $(document).ready(function () {
  
   }).done(function (data, msg) {
     console.log(data);
+    let i = 1
+    let j = 1
     $.each(data, function (indexInArray, valueOfElement) {
-      makeGrid(valueOfElement);
+     
+      if(j >4){
+        i++
+        j=1
+      }
+      makeGrid(valueOfElement, i, j);
+      j++
     });
 
-    $('.submit').click(function (e) { 
-      e.preventDefault();
-      // e.stopPropagation
-      console.log(e.target.id)
-      sessionStorage.setItem(EVENTID,JSON.stringify(e.target.id));
-      window.location = '/eventPage/event.html'
-      
-    });
+   
   });
 
-  function makeGrid(i) {
-    // let container = document.getElementById("event-wrapper");
+  
+
+  // function makeGrid(i) {
+  //   // let container = document.getElementById("event-wrapper");
     
-    $('#event-wrapper').append(
-        `
-      <div class="event-card" id = "${i.eventID}">
+  //   $('#event-wrapper').append(
+  //       `
+  //     <div class="event-card" id = "${i.eventID}">
 
-      <img src="../resources/img/pexels-burst-374780.jpg"  alt="" class="wrap_img">
-      <div class="event-card-details">
-          <h3 class="event-head">${i.eventName}</h3>
-          <p class="event-time">${getDate(i.startDate, "month")} ${getDate(
-          i.startDate,
-          "day"
-        )}, ${i.startTime}</p>
+  //     <img src= ${i.imgUrl}  alt="" class="wrap_img">
+  //     <div class="event-card-details">
+  //         <h3 class="event-head">${i.eventName}</h3>
+  //         <p class="event-time">${getDate(i.startDate, "month")} ${getDate(
+  //         i.startDate,
+  //         "day"
+  //       )}, ${i.startTime}</p>
       
-          <p class="event-host">${i.organiser.firstName}</p>
-          <div class="form-bo">
+  //         <p class="event-host">${"i.organiser.firstName"}</p>
+  //         <div class="form-bo">
       
-          <input type="button" class="submit" value="see details" id="${i.eventID}">
-      </div>
+  //         <input type="button" class="submit" value="see details" id="${i.eventID}">
+  //     </div>
 
-      </div>
+  //     </div>
     
      
-  </div>`);
+  // </div>`);
 
 
+  //       // container.append(cell);
+  // }
+    
+  function makeGrid(i, row, column) {
+    // let container = document.getElementById("event-wrapper");
+    
+    $('.event-container').append(
+        `
+        <div class="event-card" id="${i.eventID}" style= "grid-template-rows: ${row}; grid-template-columns:${column}" >
+                
+                  <img src="${i.imgUrl}" class = "event-ad-img"  id="${i.eventID}">
+                
+                <div class="event-body"  id="${i.eventID}">
+                  <h2 class="event-heading"  id="${i.eventID}">${i.eventName}</h2>
+                  <p class="event-date"  id="${i.eventID}">${getDate(i.startDate, "month")} ${getDate(
+                    i.startDate,
+                    "day"
+                  )}, ${i.startTime}</p>
+                  <p class="location"  id="${i.eventID}">${i.address.city}</p>
+                  <p class="event-cost"  id="${i.eventID}">${i.cost}</p>
+                  <div class="event-org">
+                    <p class="event-organiser"  id="${i.eventID}"
+                    >${i.organiserName}</p>
+                  </div>
+                 
+                </div>
+              </div>
+              `);
+
+
+              $('.event-card').click(function (e) { 
+                e.preventDefault();
+                // e.stopPropagation
+                console.log("errrt" +e.target.id)
+                sessionStorage.setItem(EVENTID,JSON.stringify(e.target.id));
+                window.location = '/eventPage/event.html'
+                
+              });
         // container.append(cell);
   }
     
   
 
-  let slideIndex = 0;
-  // showSlides();
-
-  function showSlides() {
-    let i;
-    let slides = document.getElementsByClassName("slideimg");
-    //   let dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    }
-    //   for (i = 0; i < dots.length; i++) {
-    //     dots[i].className = dots[i].className.replace(" active", "");
-    //   }
-    slides[slideIndex - 1].style.display = "block";
-
-    setTimeout(showSlides, 10000); // Change image every 2 seconds
-  }
-
+ 
   $("#create-event").click(function (e) {
     e.preventDefault();
 
@@ -109,4 +129,15 @@ $(document).ready(function () {
     e.preventDefault();
     window.location = "../EventListPage/EventList.html";
   });
+
+  $("#maps").click(function (e) {
+    e.preventDefault();
+    window.location = "../GoogleApi/dashboardmap.html";
+  });
+
+  $("#online").click(function (e) {
+    e.preventDefault();
+
+  });
+
 });

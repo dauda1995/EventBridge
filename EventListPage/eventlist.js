@@ -5,10 +5,13 @@ import { getEventsFromDatabase, swtAlrt } from "../services/EventServices.js";
 
 $(document).ready(function () {
   let events = [];
+ 
   // let obj = getUserDetail("#username");
   let userid = JSON.parse(sessionStorage.getItem(token));
+  let url = `${URL_EVENTS}/byorganiser/${userid.id}`;
 
-  console.log(userid.id)
+  $("#username").html(userid.username)
+ 
 
 
   const sweet = sessionStorage.getItem(SWEETALERT);
@@ -46,8 +49,9 @@ $(document).ready(function () {
   // const [Dy, month, year] = d.split(' ')
   // console.log(year)
 
-  let response = async() =>{
-    return await getEventsFromDatabase(`${URL_EVENTS}/byorganiser/${userid.id}`).then((res) =>{
+  let response = async(category) =>{
+    
+    return await getEventsFromDatabase(url).then((res) =>{
       $.each(res, function (indexInArray, valueOfElement) { 
         appendList(valueOfElement);
       });
@@ -80,7 +84,7 @@ $(document).ready(function () {
       e.preventDefault();
       let id = e.target.id;
       console.log(id)
-      sessionStorage.setItem(EVENTID, id);
+      sessionStorage.setItem(EVENTID,JSON.stringify(id));
       window.location ="../eventPage/event.html"
     });
   };
@@ -91,7 +95,7 @@ $(document).ready(function () {
     const [day, month, year] = str.split(" ");
 
     $(".list-event").append(`
-        <li class="eventItem" id=${single.id}>
+        <li class="eventItem" id='${single.id}'>
         <div class="event-list-lower">
           <div class="list-heading">
             <div id="line">
@@ -100,24 +104,24 @@ $(document).ready(function () {
                 <div class="day" id="day">${day}</div>
               </div>
 
-              <img src="../resources/img/images.svg" alt="" />
+             
 
               <div class="event-details">
                 <p class="title" id="eventName">${single.eventName}</p>
-                <p class="type" id="location">${single.location}</p>
+                <p class="type" id="location">${single.organiserName}</p>
                 <p class="date-time">${day} ${month}, ${year} ${single.startTime}</p>
               </div>
             </div>
 
             <div id="three">
               <div>0/0</div>
-              <div>$0.00</div>
+              <div>${single.cost}</div>
               <div id="eventType">${single.eventType}</div>
             </div>
           </div>
 
           <div class="more-container">
-          <img src ="../resources/img/arrow/front-arrow.svg" alt="" class="more" id=${single.eventID}/>
+          <img src ="../resources/img/arrow/front-arrow.svg" alt="" class="more" id='${single.eventID}'/>
         </div>
         
         </div>
@@ -138,7 +142,32 @@ $(document).ready(function () {
 
   $('#home-nav').click(function (e) { 
     e.preventDefault();
-    window.location = '../Dashboard/dashboard.html'
+    window.location = '../new_concepts/landingPage.html'
+
+    
+  });
+
+  let removeli = ()=>{
+    $('.eventItem').remove();
+  }
+
+
+  
+  $("#event-status").change(function (e) { 
+    e.preventDefault();
+    removeli();
+
+    let text = $( "#event-status option:selected" ).text();
+    console.log(text);
+
+    if(text == "All"){
+      url = `${URL_EVENTS}/byorganiser/${userid.id}`;
+    }else{
+      console.log("gotten to here")
+      url = `${URL_EVENTS}/byorganiserandCategory/${userid.id}/${text}`;
+    }
+   
+    response(url);
 
     
   });

@@ -24,8 +24,8 @@ body{
    
 }
 
-#user-nav a:hover{
-    background-color: green;
+#user-nav:hover{
+    background-color:  rgb(10, 79, 40);
     color: #fff;
     padding:12px;
     border-radius: 20px;
@@ -287,10 +287,11 @@ div .event-card{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 20px;
-    width: 22%;
-    margin-bottom: 25px;   
+   
+    width: 30%;
+    margin-bottom: 50px;   
     max-height: auto;
+    
     box-shadow: 0 4px 4px 0 rgba(150, 150, 150, 0.2), 0 6px 10px 0 rgba(100, 100, 100, 0.19);
 
 }

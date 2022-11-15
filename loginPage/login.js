@@ -1,5 +1,5 @@
 
-import { BASE_URL, setBearer, sweetAlrtSuccess, token, URL_SIGNIN } from "../model/keys.js";
+import { BASE_URL, setBearer, signup2login, sweetAlrtSuccess, token, URL_SIGNIN } from "../model/keys.js";
 import { user } from "../model/user.js";
 import { swtAlrt } from "../services/EventServices.js";
 import {LoginService, USER_API_BASE_URL} from "../services/LoginService.js";
@@ -7,74 +7,77 @@ import {LoginService, USER_API_BASE_URL} from "../services/LoginService.js";
 
 $('document').ready(function(){
     // localStorage.clear()
+    let alrt = async(eventType, title, icon, callback) =>{
+        return await swtAlrt(eventType, title, icon).then(() =>{
+          callback
+        })
+    }
+
+    let userDetails =JSON.parse(sessionStorage.getItem(signup2login))
+    if(userDetails != null){
+    $('.email').val(userDetails.firstName);
+    $('.password').val(userDetails.password);
+    }
+
+    // $.post("url", data,
+    //     function (data, textStatus, jqXHR) {
+            
+    //     },
+    //     "dataType"
+    // );
+  
     
-    const getUsers = (data) => {
+    const getUsers = (obj) => {
 
-        $.post(URL_SIGNIN, data,
+        $.post(URL_SIGNIN, obj,
             function (data, textStatus, jqXHR) {
-                
-                const users = data;
-
-                console.log(data.username)
+              
+               
+                // console.log(data)
                 sessionStorage.setItem(token, JSON.stringify(data))
                
                 console.log(sessionStorage.getItem(token));
                
                 // sweetAlrtSuccess("welcome!!", "Login Successful" + textStatus, "../Dashboard/dashboard.html");
 
-                let alrt = async() =>{
-                    return await swtAlrt('success', 'Login successful', 'success').then(() =>{
-                        window.location = "../Dashboard/dashboard.html";
-                    })
-                }
 
-                alrt();
+                alrt('success', 'Login successful', 'success', window.location = "../new_concepts/landingPage.html");
                
-                // swal({
-                //     title: "Login Successful!",
-                //     text: "Welcome",
-                //     icon:"success",
-                //     button:false
-                
-                //   }).then((result) => {
-                    
-                   
-                //     window.location = "../Dashboard/dashboard.html"
-                    
-                //   })
-
-                ////////////////
-
-
-            //     swal({
-            //         title: "Login Successful!",
-            //         text: "Welcome",
-            //         icon:"success",
-            //         button:false},
-            //         function(){
-            //             console.log('dddddd')
-            //            window.location = "../Dashboard/dashboard.html"
-                       
-                    
-            //  });
-                
-               
+          
             },
 
         );
+
+       
+
+        //   $.ajax( URL_SIGNIN, {
+        //     type : "POST",
+        //     contenttype : "application/json",
+        //     // submit this data
+        //     data : obj,
+        //     dataType : 'json',
+        //     success : function ( data, status, xhr) {
+        //     $( "#p1" ).text( "The sent data is : " + data + " and the status is " + status + "." ); },
+        //     error : function ( jqXhr, textStatus, errorMessage ) {
+        //     $( "#p1" ).text( ' The error message is : ' + errorMessage );
+        //     }
+        //     });
+            
+
+      
     }
 
     $('.submit').click(function(){
       
-        console.log("log in to user")
+       
         let username = $('.email').val();
         let password = $('.password').val();
 
         if((password.length !== 0) && (username.length !==0)){
 
             let obj = {
-                "password": password,
-                "firstNameOrEmail": username
+                password: password,
+                firstNameOrEmail: username
             }
 
            getUsers(obj);

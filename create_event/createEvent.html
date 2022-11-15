@@ -65,7 +65,6 @@
 
                 <div class="">
                     <label for="summary"></label>
-
                     <textarea class="search-input" placeholder="Tell attendees what your event is all about, be descriptive" name="summary" id="event-summary" rows="4" cols="50" required></textarea></textarea>
                 </div>
 
@@ -91,6 +90,7 @@
                         <button class="list-button" id="venue">Venue</button>
                         <button class="list-button" id="online">Online event</button>
                         <button class="list-button" id="future" >To be announced</button>
+                    
                     </div>
                     <div class="">
                        <!-- ? <label for="title">Location</label> -->
@@ -107,9 +107,18 @@
                     </p>
                 </div>
                     <div id="three">
-                        <button class="list-button-time " id="science" ><p>Science</p></button>
-                        <button class="list-button-time" id="music" ><p>Music and culture</p></button>
-                        <button class="list-button-time" id="Expos" ><p>Expos</p></button>
+                        <select class="list-button-time " >
+                            <option value="all">All</option>
+                            <option value="music and Arts">music and Arts</option>
+                            <option value="expo">expo</option>
+                            <option value="science">science</option>
+                            <option value="Free">Free</option>
+                            <option value="Travel & outdoor">Travel & outdoor</option>
+                            <option value="Business">Business</option>
+                            <option value="Health">Health</option>
+                        </select>
+                        <!-- <button class="list-button-time" id="music" ><p>Music and culture</p></button>
+                        <button class="list-button-time" id="expo" ><p>Expo</p></button> -->
                         
                     </div>
                     <div class="choose-date">

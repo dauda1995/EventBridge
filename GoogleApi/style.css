@@ -128,4 +128,92 @@ img{
 
 #submit-img{
   top:200px
+
 }
+
+#container-pop {
+
+  position: absolute;
+  background-color: #fff;
+  z-index: 100;
+  /* display:flex; */
+  width: 100%;
+  right:32%;
+  /* bottom:0; */
+  bottom: 10%;
+  /* display: block; */
+  
+ 
+  /* align-content: center; */
+  width: 400px;
+  
+  margin-top: 40px;
+ 
+  border-radius: 5px;
+}
+#popup-img{
+
+  object-fit: contain;
+
+}
+
+#container-pop #re{
+
+  /* color: #4d90fe; */
+ 
+  margin: 12px 12px;
+  font-size: large;
+  font-weight: 300;
+}
+
+.butt{
+  /* margin: 0; */
+  /* padding:0; */
+ /* text-decoration: none; */
+ text-decoration-color: #4d90fe;
+
+}
+
+.path{
+  position: absolute;
+  z-index: 100;
+  /* display:flex; */
+  width: 100%;
+  right:32%;
+  /* bottom:0; */
+  bottom: 10%;
+  /* display: block; */
+  
+ 
+  /* align-content: center; */
+  width: 400px;
+  
+  margin-top: 40px;
+ 
+  border-radius: 5px;
+}
+
+.pathway, .register{
+  margin-right: 20px;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  /* color: white;
+  background-color:#4d90fe; */
+
+  /* visibility: collapse; */
+
+  /* width: 50px; */
+}
+
+html,
+body,
+#map_canvas {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+
+

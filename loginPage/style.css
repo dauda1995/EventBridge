@@ -1,7 +1,7 @@
 body{
     background-color: #ffffff;
     margin: 0;
-    font-family:Arial, Helvetica, sans-serif;
+    /* font-family:Arial, Helvetica, sans-serif; */
 }
 
 .container-root{
@@ -9,6 +9,10 @@ body{
    flex-direction: column;
     height: 90%;
     /* border: 1px solid #000; */
+}
+
+*{
+    font-family: 'Mulish';font-size: 15px;
 }
 
 .top{

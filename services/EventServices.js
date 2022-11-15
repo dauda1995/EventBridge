@@ -45,7 +45,7 @@ export async function swtAlrt(type, title, icon){
 
 export async function getEventsFromDatabase(geturl){
     console.log(geturl)
-    let obj = $.ajax({
+    let obj = await $.ajax({
         type: "GET",
         url: geturl,
        

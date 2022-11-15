@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id = 'main'>
+
+    </ul>
+    <ul class = "sides">
+
+    </ul>
+    <ul class = "soups">
+
+    </ul>
+    
+    <script>
+
+let data = []
+let arr = 0
+let item =(single) =>{ return `<li id = ${single.id}> ${single.nameOfDish} </li>`}
+
+for(let i = 0; i< data.length; i++){
+    document.getElementById('main').append(item(data[i]))
+}
+    </script>
+
+</body>
+</html>

@@ -4,6 +4,7 @@ import { GOOGLE_PATH } from "../model/paths.js";
 import {selectButton} from "../exportFunctions/helperFunctions.js";
 import { submitEventDetails } from "../services/EventServices.js";
 
+
 $(document).ready(function () {
     let venueType;
     let  category;
@@ -38,15 +39,16 @@ $(document).ready(function () {
         selectButton(locationArr, ".list-button");
 
                 
-        let categories = ["science", "music", "Expos"];
+        let categories = ["science", "music", "expo"];
         category= "";
-        selectButton(categories, ".list-button-time");
+        // selectButton(categories, ".list-button-time");
 
         $("#user-name").html(userId.username);
 
         $(".list-button").click(function (e) {
             e.preventDefault();
             console.log(e.target.id)
+            obj.eventType = e.target.id;
             venueType = e.target.id;
            
          
@@ -62,10 +64,15 @@ $(document).ready(function () {
 
         });    
         
-        $(".list-button-time").click(function (e) {
+        $(".list-button-time").change(function (e) {
             e.preventDefault();
             console.log(e.target.id)
-            category = e.target.id;
+           
+            let text = $( ".list-button-time option:selected" ).text();
+            console.log(text)
+            category = text;
+
+            
            
         });
 
@@ -75,6 +82,7 @@ $(document).ready(function () {
 
     }
 
+   
     
     let selectButtons = (id) =>{
         if(id != ''){
@@ -107,7 +115,9 @@ $(document).ready(function () {
         $("#event-summary").val(obj.summary);
         $("#event-cost").val(obj.cost);
         $("#event-address").val(obj.location);
+        $('#event-img').attr('src',()=>{return obj.imgUrl})
         venueType = obj.eventType;
+        console.log(obj.eventType)
         category = obj.preference;
 
       
@@ -124,6 +134,8 @@ $(document).ready(function () {
 
     let saveDataToSessionStorage =() =>{
 
+        // obj.imgUrl = $('#event-img').val();
+        console.log(obj.imgUrl);
         obj.eventName =  $("#event-title").val();
         obj.organiserName =  $("#event-organiser").val();
         obj.startDate = $("#event-date-start").val();
@@ -132,7 +144,7 @@ $(document).ready(function () {
         obj.endTime =  $("#event-time-end").val();
         obj.summary = $("#event-summary").val();
         obj.cost =  $("#event-cost").val();
-        obj.imgUrl = $("#event-img").val();
+        // obj.imgUrl = $("#event-img").val();
         obj.location =  $("#event-address").val();
         obj.eventType = venueType;
         obj.preference = category;
@@ -151,6 +163,27 @@ $(document).ready(function () {
 
         
     }
+    $('#event-img').change(()=>{
+        imgurlConvert().then(result=>{
+            obj.imgUrl = result;
+            console.log(result)
+            $("#test").attr("src", result);
+           
+        })
+    })
+
+    let imgurlConvert = () => {
+        return new Promise((resolve, reject) => {
+            let input = document.getElementById('event-img');
+            let file = input.files[0];
+            let fr = new FileReader();
+            fr.readAsDataURL(file);
+            fr.onload =()=> resolve(fr.result)
+            fr.onerror = error => reject(error);
+        })
+       
+
+    }
 
     let loadGoogleMapApi = () =>{
         return window.location = GOOGLE_PATH;
@@ -161,8 +194,9 @@ $(document).ready(function () {
         sessionStorage.setItem(CREATE_STATE, COMPLETE);
         sessionStorage.setItem(CREATE_STATUS, null);
 
-        console.log(obj)
+       
         saveDataToSessionStorage();
+        console.log(obj)
         if(obj.eventName == null)
             return;
 

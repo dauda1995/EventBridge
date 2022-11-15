@@ -8,6 +8,21 @@ body{
  
 }
 
+#username{
+    background-color: green;
+    color: #fff;
+    padding:12px;
+    border-radius: 20px;
+   
+}
+
+#username:hover{
+    background-color:  rgb(10, 79, 40);
+    color: #fff;
+    padding:12px;
+    border-radius: 20px;
+}
+
 
 
 *{
@@ -191,8 +206,9 @@ a{
 }
 
 .event-list{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr, 1fr, 1fr, 1fr); 
+    /* flex-direction: column; */
     margin-top: 50px;
     padding-top: 20px;
     padding-left: 20px;
@@ -200,6 +216,24 @@ a{
     margin-bottom: 20px;
     background-color: #f8f7fa;
     
+}
+
+#three{
+    display: block;
+}
+
+#eve{
+    
+    margin-left: 15x;
+
+}
+
+#three div{
+    word-break: break-word;
+    align-items: center;
+    max-width: 60px;
+    word-wrap: break-word;
+    font-size: medium;
 }
 
 .event-list-lower{
@@ -260,13 +294,14 @@ a{
     display: flex;
     flex-direction: row;
 }
-.event-details{
-    display: flex;
-    flex-direction: column;
+.event-details p{
+  
+    margin-top:10px;
+   
 }
 #line img{
-    width:20px;
-    height: auto;
+    
+    height: 50px;
     padding-left:17px;
     padding-right:17px;
     margin-left:10px;
@@ -275,19 +310,20 @@ a{
 }
 
 .event-details .title{
-    font-size: 15px;
+    /* font-size: 15px; */
 }
 
 .event-details .type{
-    font-size: 12px;
+    /* font-size: 12px;
     padding-top: 5px;
-    color: #948f9c;
+    color: #948f9c; */
+    padding-top: 5px;
 }
 
 .event-details .date-time{
-    color: #948f9c;
-    font-size: 12px;
-    font-weight:500;
+    /* color: #948f9c; */
+    /* font-size: 12px;
+    font-weight:500; */
 }
 
 
@@ -341,6 +377,25 @@ a{
 .vertical-nav li:hover{
     cursor: pointer;
     
+}
+
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.back-arr{
+    display: flex;
+    justify-content: center;
+}
+.back-arr img{
+    width: 20px;
+}
+
+.heading .downarr{
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
 
