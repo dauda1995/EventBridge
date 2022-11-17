@@ -46,37 +46,6 @@ $(document).ready(function () {
    
   });
 
-  
-
-  // function makeGrid(i) {
-  //   // let container = document.getElementById("event-wrapper");
-    
-  //   $('#event-wrapper').append(
-  //       `
-  //     <div class="event-card" id = "${i.eventID}">
-
-  //     <img src= ${i.imgUrl}  alt="" class="wrap_img">
-  //     <div class="event-card-details">
-  //         <h3 class="event-head">${i.eventName}</h3>
-  //         <p class="event-time">${getDate(i.startDate, "month")} ${getDate(
-  //         i.startDate,
-  //         "day"
-  //       )}, ${i.startTime}</p>
-      
-  //         <p class="event-host">${"i.organiser.firstName"}</p>
-  //         <div class="form-bo">
-      
-  //         <input type="button" class="submit" value="see details" id="${i.eventID}">
-  //     </div>
-
-  //     </div>
-    
-     
-  // </div>`);
-
-
-  //       // container.append(cell);
-  // }
     
   function makeGrid(i, row, column) {
     // let container = document.getElementById("event-wrapper");

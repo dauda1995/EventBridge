@@ -24,16 +24,7 @@ $(document).ready(function () {
       })
   }
   alrt();
-    // swal({
-    //   title: "successful!",
-    //   text: "event successfully created",
-    //   icon: "success",
-    //   button: false,
-    //   timer: 1000,
-    // });
-    
-
-    
+   
   }
 
   let match = (str1, str2) => {
@@ -41,13 +32,6 @@ $(document).ready(function () {
     str1 == str2 ? (status = true) : (status = false);
     return status;
   };
-
-  // let m = new Date("2022-10-06");
-  // console.log(m);
-  // let d = m.toString()
-  // console.log(d)
-  // const [Dy, month, year] = d.split(' ')
-  // console.log(year)
 
   let response = async(category) =>{
     

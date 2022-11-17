@@ -23,7 +23,6 @@ $(document).ready(function () {
     sessionStorage.setItem(SWEETALERT, '')
   }
 
- 
 
   let response = async(url) =>{
     return await getEventsFromDatabase(url).then((res) =>{
@@ -40,25 +39,6 @@ $(document).ready(function () {
   url = `${URL_TICKETS}/byPersonId/${userid.id}`;
   response(url);
   }
-
-  
-  // $.get(
-  //   `${URL_TICKETS}/byPersonId/{personId}`,
-  //   userid,
-  //   function (data, textStatus, jqXHR) {
-  //     $.each(data, function (indexInArray, valueOfElement) {
-  //       if (match(valueOfElement.organiserID, userid)) {
-  //         events.push(valueOfElement);
-  //         console.log("valid");
-  //         appendList(valueOfElement);
-  //       } else {
-  //         console.log("invalid");
-  //       }
-  //     });
-
-  //     moreDetails();
-  //   }
-  // );
 
   let moreDetails = () => {
     $(".more").click(function (e) {
@@ -85,25 +65,17 @@ $(document).ready(function () {
         <li class="eventItem" id=${single.ticketId}>
         <div class="event-list-lower">
           <div class="list-heading">
-            
-             
-
-            
-
               <div class="event-details">
                 <p class="title" id="eventName">${single.event.eventName}</p>
                 <p class="type" id="location">${single.event.address.city}</p>
                 <p class="date-time">${single.event.startDate} ${single.event.startTime}</p>
               </div>
-            
-
             <div id="three">
               <div>0/0</div>
               <div>${single.event.cost}</div>
               <div id="eventType">${single.event.eventType}</div>
             </div>
           </div>
-
           <div class="more-container">
           <img src ="../resources/img/arrow/front-arrow.svg" alt="" class="more" id='${single.event.eventID}'/>
         </div>
