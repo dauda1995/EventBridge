@@ -69,7 +69,7 @@ $(document).ready(function () {
       let id = e.target.id;
       console.log(id)
       sessionStorage.setItem(EVENTID,JSON.stringify(id));
-      window.location ="../eventPage/event.html"
+      window.location ='/eventPage2/pageevent.html'
     });
   };
 
@@ -83,11 +83,7 @@ $(document).ready(function () {
         <div class="event-list-lower">
           <div class="list-heading">
             <div id="line">
-              <div class="date">
-                <div class="mon" id="month">${month}</div>
-                <div class="day" id="day">${day}</div>
-              </div>
-
+             
              
 
               <div class="event-details">

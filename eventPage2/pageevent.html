@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+    href="https://fonts.googleapis.com/css?family=Mulish"
+    rel="stylesheet"
+  />
+
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-root">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <h2>eventBridge</h2>
+            </div>             
+                  <ul class="nav-ul">
+                    <li id="create-event">
+                      <div class="nav-item">
+                        <i class="fa-solid fa-house"></i>
+                        <p class="nav-p">Home</p>
+                      </div>
+                    </li>
+                    
+                    <li id="check-events">
+                      <div class="nav-item">
+                        <i class="fa-solid fa-ticket"></i>
+                        <p class="nav-p">Tickets</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="nav-item-last">
+                      
+                        <p class="nav-p" id="username">username</p>
+                      </div>
+                    </li>
+            </ul>
+        </nav>
+        <div class="card-container">
+
+            <img src="" alt="" class="hero-img" id="event_image">
+            <div class="first-container">
+                <div class="head">
+
+                    <img src="" alt="" class="img-event" id="event_image">
+                    <div class="right">
+                        <div>
+
+                            <h3 class="date" id="datemon">Nov</h3>
+                            <h3 class="date" id="dateday">Sat</h3>
+                        <h1 class="eventtitle"></h1>
+                        
+                        <h4 class="host"></h4>
+
+                        <h3 class="price"></h3>
+
+                        </div>
+                        
+                        <button type="button" class="register" value="Register">
+                            <p class="reg">Register</p>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="second-container">
+                    <div class="date-locate">
+
+                        <h3 id="static-h3">When and where</h3>
+                        <div class = "cont">
+
+                            <div>
+                                <i class="fa-solid fa-calendar-days fa-2x"></i>
+                            <h3 class="time" id="event-time"></h3>
+                            </div>
+                            <div>
+                                <i class="fa-sharp fa-solid fa-location-dot fa-2x"></i>
+                                <h3 class="time" id="event-location"></h3>
+                            </div>
+                           
+                             
+                        </div>
+
+                        <div class="about-static"> 
+                            <h2 class="title">About this event</h2>
+                           <div class="summary">
+                           </div>
+
+
+
+                           <h2 id="sh">Share with friends</h2>
+
+                           <ul>
+                            <li id="facebook">
+                                <i class="fa-brands fa-facebook  fa-2x"></i>
+
+                            </li>
+
+                            <li id="messenger">
+                                <i class="fa fa-camera-retro  fa-2x"></i>
+
+                            </li>
+
+                            <li id="linkedin">
+                                <i class="fa-brands fa-linkedin  fa-2x"></i>
+                            </li>
+
+                            <li id="twitter">
+                                <i class="fa-brands fa-twitter  fa-2x"></i>
+                            </li>
+
+                            <li id="mail">
+                                <i class="fa-solid fa-envelope  fa-2x"></i>
+                            </li>
+                           </ul>
+
+
+                           
+                          
+                          
+
+
+
+                        </div>
+                        
+                        
+
+
+              
+                    </div>
+
+                    <div class="details">
+                       
+                    </div>
+                    <div class="ifrms">
+
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type = "module" src="/eventPage/eventPage.js"></script>
+
+    
+</body>
+</html>

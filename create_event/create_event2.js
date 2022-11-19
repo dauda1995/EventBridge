@@ -115,6 +115,8 @@ $(document).ready(function () {
         $("#event-summary").val(obj.summary);
         $("#event-cost").val(obj.cost);
         $("#event-address").val(obj.location);
+        // $('#event-img').val(obj.imgUrl);
+
         $('#event-img').attr('src',()=>{return obj.imgUrl})
         venueType = obj.eventType;
         console.log(obj.eventType)

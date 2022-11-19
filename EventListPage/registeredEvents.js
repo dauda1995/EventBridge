@@ -47,7 +47,7 @@ $(document).ready(function () {
       console.log(id)
       sessionStorage.setItem(TICKETID,JSON.stringify(id));
       sessionStorage.setItem(EVENTID, JSON.stringify(id))
-      window.location ="../eventPage/event.html"
+      window.location ='/eventPage2/pageevent.html'
     });
   };
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
     let str = date.toString();
     const [day, month, year] = str.split(" ");
 
-    $(".event-list").append(`
+    $(".list-event").append(`
         <li class="eventItem" id=${single.ticketId}>
         <div class="event-list-lower">
           <div class="list-heading">

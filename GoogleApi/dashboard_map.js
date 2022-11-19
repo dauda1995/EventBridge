@@ -7,7 +7,7 @@
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-import {EVENT_LOCATION_KEY, URL_EVENTS} from '../model/keys.js'
+import {EVENT_LOCATION_KEY, URL_EVENTS, EVENTID} from '../model/keys.js'
 import { user } from '../model/user.js';
 import { swtAlrt, getEventsFromDatabase } from '../services/EventServices.js';
 
@@ -48,6 +48,7 @@ function initAutocomplete() {
             // console.log(response)
 
             for(let marker of response){
+              console.log(marker.eventName)
               arr.push(marker)
               console.log(marker)
               if(marker.eventType =='venue'){
@@ -74,6 +75,8 @@ function initAutocomplete() {
                   $('.address').html(detail.address.city);
                   $('.cat').html(detail.categories.preference);
                   $('.cost').html(detail.cost);
+
+                  // $('')
                   $('.dir').click(function (e) { 
                     e.preventDefault();
 
@@ -85,8 +88,15 @@ function initAutocomplete() {
 
                   $('.reg').click(function (e) { 
                     e.preventDefault();
-                    
+
+                    console.log(detail.eventID)
+                    sessionStorage.setItem(EVENTID,JSON.stringify(detail.eventID));
+                    console.log(sessionStorage.getItem(EVENTID))
+                    window.location = '../eventPage2/pageevent.html'
+
                   });
+
+                 
                   if (stats){
                   
                     $('#container-pop').css('display', 'block');

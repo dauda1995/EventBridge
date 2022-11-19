@@ -322,7 +322,7 @@ div .wrapper{
     margin-bottom: 20px;
     flex-direction: column;
     /* max-width: 300px; */
-    /* box-shadow: 1px 1px 15px rgba(33,33,33,.2); */
+    box-shadow: 1px 1px 15px rgba(33,33,33,.2);
   }
 
  

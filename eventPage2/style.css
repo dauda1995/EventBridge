@@ -1,0 +1,299 @@
+*{
+    font-family: 'Mulish';font-size: 15px;
+    list-style: none;
+    margin: 0;
+    padding:0;
+
+}
+body{
+    width: auto;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 30px;
+    background-color: #f8f7fa;
+    /* background-color: black; */
+    /* background-color: #f8f7fa; */
+}
+
+
+.container-root{
+
+    display: flex;
+    flex-direction: column;
+    
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+
+    /* background-color: ; */
+}
+
+.nav-container{
+    display: flex;
+    position: sticky;
+    top:0;
+    z-index: 100;
+    background-color: white;
+    /* width: 100%; */
+    justify-content: space-between; 
+    /* padding: 15px 20px; */
+    padding-left:  10px;
+    /* padding-left:20px; */
+    /* padding-right: 20px; */
+    /* align-items: center; */
+    
+
+}
+.logo-container h2{
+
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #d1410c;
+}
+
+.nav-ul{
+    display: flex;
+    /* width:30vw; */
+    justify-content: start;
+    
+}
+
+.nav-ul li:hover{
+  background-color: #f8f7fa;
+ 
+ 
+}
+
+ .nav-item{
+  
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 15px;
+    
+}
+
+.nav-item-last{
+    height: 100%;
+    align-items: center;
+    display: flex;
+    width: 10vw;
+    justify-content: space-evenly;
+   
+}
+
+.nav-item-last .nav-p{
+
+  background-color: green;
+  border-radius: 15px;
+  padding:7px;
+  color:white;
+}
+
+.card-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #d1410c; */
+    /* justify-content: center; */
+    align-items: center;
+    justify-items: center;
+
+
+}
+
+.hero-img{
+    object-fit: cover;
+    width:100%;
+    max-height: 70%;
+    filter: blur(8px);
+    -webkit-filter: blur(7px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    position: absolute;
+}
+
+.first-container{
+    /* width: fit-content; */
+    background-color: white;
+    width: 70%;
+    /* max-height: 700px; */
+    /* height: 400px; */
+    margin: 40px 0 0 0;
+}
+
+.img-event{
+    object-fit: cover; 
+    width: 70%;
+    height: 100%;
+
+}
+
+.head{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    height: 400px;
+    
+}
+
+.right{
+   
+  
+    width:30%;
+    height: 100%;
+    padding:  15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+
+
+.right .date{
+    font-size: 1.5rem;
+}
+
+.right .eventtitle{
+    padding: 5px 0;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-top: 10px;
+
+}
+.right .price{
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.right .host{
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.right .register{
+   
+    border: none;
+    color: #fff;
+    background-color: #d1502b;
+    border-radius: 4px;
+    font-size: medium;
+    padding:5% 30%;
+    margin-top: 35%;
+    
+   
+}
+
+.right .register:hover{
+    background-color:#993013;;
+}
+
+.date-locate{
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.second-container{
+    background-color: #fff;
+    width: 70%;
+    height: 100%;
+}
+
+.second-container .cont{
+    display: flex;
+    padding: 0 20px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.second-container .cont h3{
+    font-size: 1.3rem;
+}
+
+.date-locate #static-h3{
+
+    margin-top: 50px;
+    margin-left: 20px;
+    font-size: 1.9rem;
+    font-weight:900;
+}
+
+.second-container .cont div{
+    display: flex;
+    
+}
+
+.time{
+    margin-left: 20px;
+}
+
+.about-static{
+    margin: 15px ;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.about-static .title{
+    font-size: 2.0rem;
+    margin-top: 10px;
+}
+
+.about-static .summary{
+
+    margin-top: 30px;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+.starttime, .starttime p{
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.starttime p{
+    font-size: 1.5rem;
+}
+
+
+#sh{
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.about-static li{
+
+   
+    margin:12px 10px;
+}
+
+.about-static li{
+    margin:12px 10px;
+
+}
+
+.about-static ul{
+    display:flex;
+    
+    margin-top: 20px;
+}
+
+.about-static li {
+    margin-right: 12px;
+    margin-top:12px;
+
+
+    
+}
+
+i:hover {
+    color: #d1502b;
+
+    
+}

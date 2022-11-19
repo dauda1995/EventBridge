@@ -19,19 +19,20 @@ $(document).ready(function () {
       console.log(eventDetails.location);
 
       $("#user-name").html(userId.username);
-      $(".mon").html(getDate(eventDetails.startDate, "month"));
-      $(".day").html(getDate(eventDetails.startDate, "day"));
-      $("#event-heading").html(eventDetails.eventName);
-      $(".event-cost").html(eventDetails.cost);
+      $("#datemon").html(getDate(eventDetails.startDate, "month"));
+      $("#dateday").html(getDate(eventDetails.startDate, "day"));
+      $(".eventtitle").html(eventDetails.eventName);
+      $(".price").html(eventDetails.cost);
       $("#event-headings").html(eventDetails.eventName);
-      $("#summary").html(eventDetails.summary);
+      $(".host").html(eventDetails.organiserName);
+      $(".summary").html(eventDetails.summary);
       $(".hero-img").attr('src', eventDetails.imgUrl)
       $('.img-event').attr('src', eventDetails.imgUrl)
 
-      $(".event-time").html(
+      $("#event-time").html(
         getDate(eventDetails.startDate, "both") + " " + eventDetails.startTime
       );
-      $(".event-location").html(eventDetails.location);
+      $("#event-location").html(eventDetails.address.city);
 
       checkReservation();
     }
@@ -85,16 +86,21 @@ $(document).ready(function () {
       //       dateCreated:obj.dateCreated
     };
 
+    
+
     let ticket = tickets(obj);
     console.log(eventDetails.eventID)
 
+    console.log(eventId)
 
 
     $.post(
       `${URL_TICKETS}/save/${eventId}/${userId.id}/tickets`,
       ticket,
       function (data, textStatus, jqXHR) {
+        console.log(textStatus)
         if (textStatus == "success") {
+          checkReservation();
           swal({
             title: "Reservation successful!",
             text: "you have registered for this event, see you there!",
@@ -102,7 +108,7 @@ $(document).ready(function () {
             button:false,
             timer: 2000
            });
-           checkReservation();
+          
         }else{
           swal({
             title: "Reservation Failed",
@@ -119,18 +125,20 @@ $(document).ready(function () {
 
   let checkReservation = ()=>{
 
-    console.log(userId.id, parseInt(eventId))
-    $.get(`${URL_TICKETS}/getbyIds/${userId.id}/${parseInt(eventId)}`,
+    console.log(userId.id, eventDetails.eventID)
+    $.get(`${URL_TICKETS}/getbyIds/${eventDetails.eventID}/${userId.id}`,
       function (data, textStatus, jqXHR) {
         try {
 
 
-          console.log(textStatus, data)
+          // console.log(textStatus, data)
           
-          if(data!= 'undefined'){
+          console.log("checkreservation: " + textStatus)
+          // console.log(data)
+          if(textStatus == 'success'){
             console.log("err" + data)
             $(".register").attr('disabled', true);
-            $('#reg').html('Reserved');
+            $(".reg").html('Reserved');
            }
           
         } catch (error) {
@@ -149,6 +157,6 @@ $(document).ready(function () {
 
   $('#create-event').click(function (e) { 
     e.preventDefault();
-    window.location = "/create_event/createEvent.html";
+    window.location = "/new_concepts/landingPage.html";
   });
 });

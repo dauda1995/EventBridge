@@ -79,7 +79,7 @@ $(document).ready(function () {
                 // e.stopPropagation
                 console.log("errrt" +e.target.id)
                 sessionStorage.setItem(EVENTID,JSON.stringify(e.target.id));
-                window.location = '/eventPage/event.html'
+                window.location = '/eventPage2/pageevent.html'
                 
               });
         // container.append(cell);
