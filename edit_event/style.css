@@ -71,9 +71,6 @@ ul{list-style-type: none;}
     height:60px;
     width: 100%;
     background-color: #ffffff;
-    position: sticky;
-    top:0;
-    border-bottom: 0.1px solid rgb(180, 176, 176);
    
 
 }

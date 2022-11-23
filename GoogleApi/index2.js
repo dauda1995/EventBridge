@@ -7,7 +7,7 @@
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-import {EVENT_LOCATION_KEY} from '../model/keys.js'
+import {EVENT_LOCATION_KEY, CREATE_TYPE, CREATE_TYPE_CREATE, CREATE_TYPE_EDIT} from '../model/keys.js'
 function initAutocomplete() {
 
   const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -111,7 +111,13 @@ function initAutocomplete() {
     let lcteStr = JSON.stringify(endpoint)
     console.log(lcteStr)
     sessionStorage.setItem(EVENT_LOCATION_KEY, lcteStr)
-    window.location = '../create_event/createEvent.html'
+
+    console.log(sessionStorage.getItem(CREATE_TYPE))
+    if(sessionStorage.getItem(CREATE_TYPE) == CREATE_TYPE_CREATE){
+      window.location = '../create_event/createEvent.html';
+    }else if(sessionStorage.getItem(CREATE_TYPE) == CREATE_TYPE_EDIT){
+      window.location = '../edit_event/editEvent.html';
+    }
   })
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.

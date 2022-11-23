@@ -7,6 +7,10 @@ export const CREATE_STATE = "complete";
 export const EVENT_LOCATION_KEY = "location_key";
 export const COMPLETE = "complete";
 export const INCOMPLETE = "incomplete";
+export const CREATE_TYPE = "";
+
+export const CREATE_TYPE_EDIT = "UPDATE";
+export const CREATE_TYPE_CREATE = "CREATE";
 
 export const token = "token";
 export const signup2login = "sigup2login";

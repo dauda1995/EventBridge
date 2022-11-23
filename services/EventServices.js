@@ -30,6 +30,30 @@ return stat;
 
 };
 
+export async function updateEventDetails(eventDetails, url){
+    let stat;
+    let obj = await $.ajax({
+        type: "PUT",
+        url: url,
+        data: eventDetails,
+        // dataType: "dataType",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        success: function (response) {
+            swtAlrt("success", "updated successfully", "success");
+            stat = 'success';
+        },
+        error: function(response){
+            swtAlrt("error", "failed update", "error");
+            stat = 'error';
+        }
+
+    });
+
+    return stat
+}
+
 export async function swtAlrt(type, title, icon){
 
    return await swal({
@@ -77,5 +101,3 @@ export async function getEventsFromDatabase(geturl){
 
 //     return obj;
 // }
-
-

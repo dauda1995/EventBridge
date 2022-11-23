@@ -1,30 +1,40 @@
 import getUserDetail from "../exportFunctions/getUser.js";
-import { EVENTID, SWEETALERT, BASE_URL, URL_EVENTS, token } from "../model/keys.js";
+import {
+  EVENTID,
+  SWEETALERT,
+  BASE_URL,
+  URL_EVENTS,
+  token,
+  CREATE_TYPE,
+  CREATE_TYPE_EDIT,
+  CREATE_TYPE_CREATE,
+} from "../model/keys.js";
 import { user } from "../model/user.js";
 import { getEventsFromDatabase, swtAlrt } from "../services/EventServices.js";
 
 $(document).ready(function () {
   let events = [];
- 
+  let state = 1;
+
   // let obj = getUserDetail("#username");
   let userid = JSON.parse(sessionStorage.getItem(token));
   let url = `${URL_EVENTS}/byorganiser/${userid.id}`;
 
-  $("#username").html(userid.username)
- 
-
+  $("#username").html(userid.username);
 
   const sweet = sessionStorage.getItem(SWEETALERT);
   console.log(sweet);
   if (sweet == "success") {
-
-    let alrt = async() =>{
-      return await swtAlrt('success', 'event successfully created', 'success').then(() =>{
-        sessionStorage.setItem(SWEETALERT, '')
-      })
-  }
-  alrt();
-   
+    let alrt = async () => {
+      return await swtAlrt(
+        "success",
+        "event successfully created",
+        "success"
+      ).then(() => {
+        sessionStorage.setItem(SWEETALERT, "");
+      });
+    };
+    alrt();
   }
 
   let match = (str1, str2) => {
@@ -33,16 +43,15 @@ $(document).ready(function () {
     return status;
   };
 
-  let response = async(category) =>{
-    
-    return await getEventsFromDatabase(url).then((res) =>{
-      $.each(res, function (indexInArray, valueOfElement) { 
+  let response = async (category) => {
+    return await getEventsFromDatabase(url).then((res) => {
+      $.each(res, function (indexInArray, valueOfElement) {
         appendList(valueOfElement);
       });
 
       moreDetails();
-    })
-  }
+    });
+  };
 
   response();
 
@@ -64,12 +73,66 @@ $(document).ready(function () {
   // );
 
   let moreDetails = () => {
+
+
+    $('body').click(function (e) { 
+      e.preventDefault();
+      if(state ==3){
+      document
+      .querySelectorAll(".event-list-lower .con-dropdown")
+      .forEach((elem) => {
+        elem.classList.remove("active");
+      });
+    }
+      
+    });
+
+    $(".more-container").click(function (e) {
+      
+      document
+        .querySelectorAll(".event-list-lower .con-dropdown")
+        .forEach((elem) => {
+          elem.classList.remove("active");
+        });
+      e.currentTarget.parentElement
+        .querySelector(".con-dropdown")
+        .classList.add("active");
+
+        state =2;
+    });
+
+
+   
+
+
+    $('.edit').click(function (e) { 
+      e.preventDefault();
+      console.log(e.target.id)
+
+      
+    let id = e.target.id;
+    console.log(id)
+    // sessionStorage.setItem(TICKETID,JSON.stringify(id));
+    sessionStorage.setItem(EVENTID, JSON.stringify(id));
+    sessionStorage.setItem(CREATE_TYPE, CREATE_TYPE_EDIT);
+    window.location ='/edit_event/editEvent.html'
+     
+      
+    });
+
+    $('.delete').click(function (e) { 
+      e.preventDefault();
+      console.log(e.target.id)
+      // window.location = '../eventPage2/pageevent.html'
+      
+    });
+
     $(".more").click(function (e) {
       e.preventDefault();
       let id = e.target.id;
-      console.log(id)
-      sessionStorage.setItem(EVENTID,JSON.stringify(id));
-      window.location ='/eventPage2/pageevent.html'
+      console.log(id);
+      sessionStorage.setItem(EVENTID, JSON.stringify(id));
+      window.location = "/eventPage2/pageevent.html";
     });
   };
 
@@ -83,9 +146,6 @@ $(document).ready(function () {
         <div class="event-list-lower">
           <div class="list-heading">
             <div id="line">
-             
-             
-
               <div class="event-details">
                 <p class="title" id="eventName">${single.eventName}</p>
                 <p class="type" id="location">${single.organiserName}</p>
@@ -101,58 +161,54 @@ $(document).ready(function () {
           </div>
 
           <div class="more-container">
-          <img src ="../resources/img/arrow/front-arrow.svg" alt="" class="more" id='${single.eventID}'/>
-        </div>
-        
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+
+          <div class="con-dropdown">
+            <ul>
+              <li id="${single.eventID}" class="edit">Edit</li>
+              <li id="${single.eventID}" class="delete">Delete</li>
+            </ul>
+          </div>
         </div>
         
       </li>`);
   };
 
-  $('#registered-events').click(function (e) { 
+  $("#registered-events").click(function (e) {
     e.preventDefault();
-    window.location = '../EventListPage/registeredEventlist.html'
-    
+    window.location = "../EventListPage/registeredEventlist.html";
   });
 
-  $('#create-btn').click(function (e) { 
+  $("#create-btn").click(function (e) {
     e.preventDefault();
-    window.location = '../create_event/createEvent.html'
+    sessionStorage.setItem(CREATE_TYPE, CREATE_TYPE_CREATE);
+    window.location = "../create_event/createEvent.html";
   });
 
-  $('#home-nav').click(function (e) { 
+  $("#home-nav").click(function (e) {
     e.preventDefault();
-    window.location = '../new_concepts/landingPage.html'
-
-    
+    window.location = "../new_concepts/landingPage.html";
   });
 
-  let removeli = ()=>{
-    $('.eventItem').remove();
-  }
+  let removeli = () => {
+    $(".eventItem").remove();
+  };
 
-
-  
-  $("#event-status").change(function (e) { 
+  $("#event-status").change(function (e) {
     e.preventDefault();
     removeli();
 
-    let text = $( "#event-status option:selected" ).text();
+    let text = $("#event-status option:selected").text();
     console.log(text);
 
-    if(text == "All"){
+    if (text == "All") {
       url = `${URL_EVENTS}/byorganiser/${userid.id}`;
-    }else{
-      console.log("gotten to here")
+    } else {
+      console.log("gotten to here");
       url = `${URL_EVENTS}/byorganiserandCategory/${userid.id}/${text}`;
     }
-   
+
     response(url);
-
-    
   });
-
-
-
-
 });

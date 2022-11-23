@@ -1,12 +1,15 @@
 
-import { BASE_URL, setBearer, signup2login, sweetAlrtSuccess, token, URL_SIGNIN } from "../model/keys.js";
+import { BASE_URL, COMPLETE, CREATE_STATE, CREATE_TYPE, CREATE_TYPE_CREATE, EVENTID, setBearer, signup2login, sweetAlrtSuccess, token, URL_SIGNIN } from "../model/keys.js";
 import { user } from "../model/user.js";
 import { swtAlrt } from "../services/EventServices.js";
 import {LoginService, USER_API_BASE_URL} from "../services/LoginService.js";
 // import axios from "axios";
 
+
 $('document').ready(function(){
-    // localStorage.clear()
+
+   
+    sessionStorage.clear()
     let alrt = async(eventType, title, icon, callback) =>{
         return await swtAlrt(eventType, title, icon).then(() =>{
           callback
@@ -84,5 +87,7 @@ $('document').ready(function(){
 
         }
     })
+
+    console.log(window.location.pathname)
 
 })
