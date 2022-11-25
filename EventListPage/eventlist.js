@@ -10,7 +10,7 @@ import {
   CREATE_TYPE_CREATE,
 } from "../model/keys.js";
 import { user } from "../model/user.js";
-import { getEventsFromDatabase, swtAlrt } from "../services/EventServices.js";
+import { getEventsFromDatabase, swtAlrt, swtAlrtDelete } from "../services/EventServices.js";
 
 $(document).ready(function () {
   let events = [];
@@ -44,7 +44,7 @@ $(document).ready(function () {
   };
 
   let response = async (category) => {
-    return await getEventsFromDatabase(url).then((res) => {
+    return await getEventsFromDatabase(url, userid.token).then((res) => {
       $.each(res, function (indexInArray, valueOfElement) {
         appendList(valueOfElement);
       });
@@ -121,10 +121,60 @@ $(document).ready(function () {
     });
 
     $('.delete').click(function (e) { 
-      e.preventDefault();
+      // e.preventDefault();
       console.log(e.target.id)
       // window.location = '../eventPage2/pageevent.html'
+      let urlx = `${URL_EVENTS}/delete/${e.target.id}`
+
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          $.ajax({
+            type: "DELETE",
+            url: urlx,
+            headers: {
+              'Authorization': 'Bearer ' + userid.token,
+              "Content-Type":"application/json"
+          },
+            success: function (response) {
+              
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+            }
+          });
+
+        }
+      })
+
+     
+
+
+
+      // let res = async () => {
+      //   let innerReturn = await swtAlrtDelete(url).then((ans) =>{
+      //     if(ans == 'success'){
+      //       console.log("checking")
+      //     }
+      //   });
+      //   console.log("return" + innerReturn)
+      // }
+
+      // res();
       
+
+     
     });
 
     $(".more").click(function (e) {

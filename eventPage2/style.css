@@ -156,24 +156,24 @@ body{
 
 
 .right .date{
-    font-size: 1.5rem;
+    font-size: 1.0rem;
 }
 
 .right .eventtitle{
     padding: 5px 0;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     font-weight: 800;
     margin-top: 10px;
 
 }
 .right .price{
     margin-top: 20px;
-    font-size: 1.5rem;
+    font-size: 1.0rem;
 }
 
 .right .host{
     margin-top: 10px;
-    font-size: 1.5rem;
+    font-size: 1.0rem;
 }
 
 .right .register{
@@ -214,14 +214,14 @@ body{
 }
 
 .second-container .cont h3{
-    font-size: 1.3rem;
+    font-size: 1.0rem;
 }
 
 .date-locate #static-h3{
 
     margin-top: 50px;
     margin-left: 20px;
-    font-size: 1.9rem;
+    font-size: 1.0rem;
     font-weight:900;
 }
 
@@ -236,7 +236,7 @@ body{
 
 .about-static{
     margin: 15px ;
-    font-size: 1.4rem;
+    font-size: 1.0rem;
     font-weight: 500;
 }
 
@@ -248,22 +248,22 @@ body{
 .about-static .summary{
 
     margin-top: 30px;
-    font-size: 1.4rem;
+    font-size: 1.0rem;
     margin-bottom: 30px;
 }
 
 .starttime, .starttime p{
     margin-bottom: 30px;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
 }
 
 .starttime p{
-    font-size: 1.5rem;
+    font-size: 1.0rem;
 }
 
 
 #sh{
-    font-size: 1.6rem;
+    font-size: 1.0rem;
     font-weight: 700;
 }
 

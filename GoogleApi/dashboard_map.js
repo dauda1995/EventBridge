@@ -49,13 +49,15 @@ function initAutocomplete() {
 
             for(let marker of response){
               console.log(marker.eventName)
+             
               arr.push(marker)
+              let dex = arr.length
               console.log(marker)
               if(marker.eventType =='venue'){
                 console.log(marker.eventID)
                 let mark = new google.maps.Marker({
                   map,
-                  label:JSON.stringify(marker.eventID),
+                  label:`${marker.eventID}, ${dex}`,
                   position: {
                     lat:marker.address.latitude,
                     lng: marker.address.longitude
@@ -66,15 +68,17 @@ function initAutocomplete() {
                 google.maps.event.addListener(mark, 'click', function(){
                   // console.log(mark.label)
 
-                  let index = parseInt(mark.label)
+                  let ar = mark.label.split(",")
+                  let ind = parseInt(ar[1])
+                  let markerid = parseInt(ar[0])
                   console.log(mark)
-                  let detail = arr[index-1];
+                  let detail = arr[ind-1];
 
                   $('#tit').html(detail.eventName);
                   $('.orgname').html(detail.organiserName);
                   $('.address').html(detail.address.city);
-                  $('.cat').html(detail.categories.preference);
-                  $('.cost').html(detail.cost);
+                  $('.cat').html(`category: ${detail.categories.preference}`);
+                  $('.cost').html(`cost: ${detail.cost}`);
 
                   // $('')
                   $('.dir').click(function (e) { 
@@ -108,7 +112,7 @@ function initAutocomplete() {
                   }else{
                     stats = true;
                     console.log(stats)
-                    $('#container-pop').css('display', 'none');
+                    // $('#container-pop').css('display', 'none');
                   }
 
       

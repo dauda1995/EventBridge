@@ -51,7 +51,8 @@ import {
 
     let setFieldsFromPayload = (response) =>{
 
-        if( sessionStorage.getItem(CREATE_STATE != INCOMPLETE)){
+        console.log(sessionStorage.getItem(CREATE_STATE))
+        if( sessionStorage.getItem(CREATE_STATE) != INCOMPLETE){
 
             obj.location = response.address.city;
             venueType = response.eventType;

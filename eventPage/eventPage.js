@@ -12,13 +12,16 @@ $(document).ready(function () {
   let eventId = JSON.parse(sessionStorage.getItem(EVENTID));
   console.log(`${URL_EVENTS}/getById/${eventId}`)
 
+  $("#username").html(userId.username);
+
   $.get(`${URL_EVENTS}/getById/${eventId}`,
     function (data, textStatus, jqXHR) {
       //  eventDetails = event(data);
       eventDetails = data
       console.log(eventDetails.location);
 
-      $("#user-name").html(userId.username);
+      
+     
       $("#datemon").html(getDate(eventDetails.startDate, "month"));
       $("#dateday").html(getDate(eventDetails.startDate, "day"));
       $(".eventtitle").html(eventDetails.eventName);
@@ -122,6 +125,19 @@ $(document).ready(function () {
     );
   });
 
+  
+
+  let swt = (imglink) =>{
+    Swal.fire({
+      title: 'Sweet!',
+      text: 'Modal with a custom image.',
+      imageUrl: imglink,
+      imageWidth: 400,
+      imageHeight: 400,
+      imageAlt: 'Custom image',
+    })
+  }
+
 
   let checkReservation = ()=>{
 
@@ -134,11 +150,25 @@ $(document).ready(function () {
           // console.log(textStatus, data)
           
           console.log("checkreservation: " + textStatus)
+          console.log(data);
           // console.log(data)
           if(textStatus == 'success'){
-            console.log("err" + data)
+            console.log("err" + data.qrcode)
             $(".register").attr('disabled', true);
-            $(".reg").html('Reserved');
+            
+            swt(`data:image/png;base64,${data.qrcode}`)
+            $(".reg").html('View QR code');
+
+            $('.reg').click(function (e) { 
+              e.preventDefault();
+              swt(`data:image/png;base64,${data.qrcode}`)
+              
+            });
+          
+            // $("#barcode").attr('src', `data:image/png;base64,${data.qrcode}`);
+
+
+
            }
           
         } catch (error) {
@@ -159,4 +189,6 @@ $(document).ready(function () {
     e.preventDefault();
     window.location = "/new_concepts/landingPage.html";
   });
+
+
 });

@@ -32,24 +32,47 @@ $('document').ready(function(){
     
     const getUsers = (obj) => {
 
-        $.post(URL_SIGNIN, obj,
-            function (data, textStatus, jqXHR) {
-              
-               
-                // console.log(data)
-                sessionStorage.setItem(token, JSON.stringify(data))
-               
+        $.ajax({
+            type: "POST",
+            url: URL_SIGNIN,
+            data: obj,
+            // headers: {
+            //     "Content-Type":"application/json"
+            // },
+            success: function (response) {
+                sessionStorage.setItem(token, JSON.stringify(response));
                 console.log(sessionStorage.getItem(token));
-               
-                // sweetAlrtSuccess("welcome!!", "Login Successful" + textStatus, "../Dashboard/dashboard.html");
-
-
                 alrt('success', 'Login successful', 'success', window.location = "../new_concepts/landingPage.html");
+            },
+            error: function (response){
+                alrt('error', 'user already exists', 'error');
+            }
+        });
+
+        // $.post(URL_SIGNIN, obj,
+        //     function (data, textStatus, jqXHR) {
+              
+        //         console.log(textStatus)
+        //        if(textStatus == 'success'){
+        //         // console.log(data)
+        //         sessionStorage.setItem(token, JSON.stringify(data))
+               
+        //         console.log(sessionStorage.getItem(token));
+               
+        //         // sweetAlrtSuccess("welcome!!", "Login Successful" + textStatus, "../Dashboard/dashboard.html");
+
+
+        //         alrt('success', 'Login successful', 'success', window.location = "../new_concepts/landingPage.html");
                
           
-            },
+        //        }else{
 
-        );
+        //         alrt('error', 'wrong username or password', 'error', window.location = "../new_concepts/landingPage.html");
+        //        }
+        //     },
+
+
+        // );
 
        
 
@@ -78,6 +101,8 @@ $('document').ready(function(){
 
         if((password.length !== 0) && (username.length !==0)){
 
+          
+
             let obj = {
                 password: password,
                 firstNameOrEmail: username
@@ -85,6 +110,11 @@ $('document').ready(function(){
 
            getUsers(obj);
 
+        }else{
+            
+                alrt('error', 'invalid email or password', 'error');
+                return
+            
         }
     })
 

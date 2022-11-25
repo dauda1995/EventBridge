@@ -39,6 +39,7 @@ body{
     /* padding-left:20px; */
     /* padding-right: 20px; */
     /* align-items: center; */
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.3);
     
 
 }

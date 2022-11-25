@@ -25,17 +25,30 @@ $(document).ready(function(){
     
         // let  user = new userInfo(email, userId, password1, first, last);
      
-        if(!email.match( /^[^\s@]+@[^\s@]+\.[^\s@]+$/))
+        if(!email.match( /^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
          alrt('error', 'invalid email', 'error');
+         return
+        }
 
-        if(password1 !== password2)
-        alrt('error', 'incorrect password match', 'error');
+        if(userId.length == 0){
+            alrt('error', 'invalid username', 'error');
+            return
+            }
 
-        if(password1.length == 0)
-        alrt('error', 'password cannot be left blank', 'error');
+        if(password1 !== password2){
+            alrt('error', 'incorrect password match', 'error');
+            return
+        }
+       
+        
+        
 
-        if(userId.length == 0)
-        alrt('error', 'invalid username', 'error');
+        if(password1.length == 0){
+            alrt('error', 'password cannot be left blank', 'error');
+            return
+        }
+
+        
 
 
 
@@ -52,6 +65,20 @@ $(document).ready(function(){
 
                     // console.log(URL_SIGNUP)
 
+                    $.ajax({
+                        type: "POST",
+                        url: URL_SIGNUP,
+                        data: obj,
+                        // dataType: "dataType",
+                        success: function (response) {
+                            alrt('success', 'Registered successfully', 'success');
+                            window.location = "../loginPage/login.html";
+                        },
+                        error:function (response){
+                            alrt('error', 'Username already exists', 'error');
+                            // window.location = "../loginPage/login.html";
+                        }
+                    });
 
                     $.post(URL_SIGNUP, obj,
                         function (data, textStatus, jqXHR) {

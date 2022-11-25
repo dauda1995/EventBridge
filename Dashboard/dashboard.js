@@ -1,58 +1,66 @@
 import { event, getDate, getTime } from "../model/event.js";
 import {EVENTID, token, BASE_URL, URL_EVENTS, URL_SIGNIN} from "../model/keys.js"
 import { user } from "../model/user.js";
-
+import {getEventsFromDatabase} from "../services/EventServices.js"
 $(document).ready(function () {
   let obj = {};
 
   
   let userid = JSON.parse(sessionStorage.getItem(token));
 
+
+
  
     $("#username").html(userid.username);
 
     console.log(`Bearer ${userid.token}`)
-  $.ajax({
 
-    type: "GET",
-    url: URL_EVENTS,
-    mode:'cors',
-  //   contentType:'application/json',
-    headers: {
-       'Authorization': 'Bearer ' + userid.token,
-       'Access-Control-Allow-Origin': '*',
-       'Accept': 'application/json',
+    let url = `${URL_EVENTS}`;
 
-      //  'Content-Type': 'application/json'
+
+    let response = async (category) => {
+      return await getEventsFromDatabase(url, userid.token).then((res) => {
+        $.each(res, function (indexInArray, valueOfElement) {
+          makeGrid(valueOfElement);
+        });
+  
+       
+      });
+    };
+
+    response();
+
+  // $.ajax({
+
+  //   type: "GET",
+  //   url: URL_EVENTS,
+  //   // mode:'cors',
+  // //   contentType:'application/json',
+  //   headers: {
+  //      'Authorization': 'Bearer ' + userid.token,
+  //     //  'Access-Control-Allow-Origin': '*',
+  //     //  'Accept': 'application/json',
+
+  //     //  'Content-Type': 'application/json'
         
        
 
-  }
+  // }
  
-  }).done(function (data, msg) {
-    console.log(data);
-    let i = 1
-    let j = 1
-    $.each(data, function (indexInArray, valueOfElement) {
-     
-      if(j >4){
-        i++
-        j=1
-      }
-      makeGrid(valueOfElement, i, j);
-      j++
-    });
-
-   
-  });
+  // }).done(function (data, msg) {
+  //   console.log(data);
+  //   $.each(data, function (indexInArray, valueOfElement) {
+  //     makeGrid(valueOfElement);
+  //   });
+  // });
 
     
-  function makeGrid(i, row, column) {
+  function makeGrid(i) {
     // let container = document.getElementById("event-wrapper");
     
     $('.event-container').append(
         `
-        <div class="event-card" id="${i.eventID}" style= "grid-template-rows: ${row}; grid-template-columns:${column}" >
+        <div class="event-card" id="${i.eventID}"  >
                 
                   <img src="${i.imgUrl}" class = "event-ad-img"  id="${i.eventID}">
                 
@@ -107,6 +115,26 @@ $(document).ready(function () {
   $("#online").click(function (e) {
     e.preventDefault();
 
+  });
+
+  let removeli = () => {
+    $(".event-card").remove();
+  };
+
+  $('.wrapper div span').click(function (e) { 
+    e.preventDefault();
+    removeli()
+    
+    let text = e.target.id;
+    console.log(text);
+   
+    if(text == "All"){
+      url = `${URL_EVENTS}`
+    }else{
+      url =`${URL_EVENTS}/bycategory/${text}`;
+    }
+
+    response(url);
   });
 
 });

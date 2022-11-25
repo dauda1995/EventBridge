@@ -30,6 +30,7 @@ body {
   display: flex;
   height: auto;
   flex-direction: row;
+  margin-bottom: 100px;
 }
 
 .horizontal {
@@ -138,7 +139,7 @@ a {
 
 .vertical-nav {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 40px;
@@ -265,12 +266,15 @@ a {
   padding: 10px 20px;
 }
 
+
 .event-list-lower .con-dropdown li:not(:last-child) {
   border-bottom: 1px solid #888;
 }
 
 .event-list-lower .con-dropdown.active {
   display: block;
+  
+  
 }
 
 .list-heading {

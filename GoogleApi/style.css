@@ -137,15 +137,15 @@ img{
   background-color: #fff;
   z-index: 100;
   /* display:flex; */
-  width: 100%;
-  right:32%;
+  width: 30%;
+  left:1%;
   /* bottom:0; */
-  bottom: 10%;
+  bottom: 2%;
   /* display: block; */
   
  
   /* align-content: center; */
-  width: 400px;
+  /* width: 400px; */
   
   margin-top: 40px;
  
@@ -161,9 +161,10 @@ img{
 
   /* color: #4d90fe; */
  
-  margin: 12px 12px;
-  font-size: large;
+  margin: 5px 5px;
+  font-size: 1.0rem;
   font-weight: 300;
+  word-wrap: break-word;
 }
 
 .butt{

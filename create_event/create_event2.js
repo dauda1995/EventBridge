@@ -16,7 +16,9 @@ import { selectButton } from "../exportFunctions/helperFunctions.js";
 import {
   getEventsFromDatabase,
   submitEventDetails,
+  swtAlrt
 } from "../services/EventServices.js";
+
 
 $(document).ready(function () {
   let venueType;
@@ -28,6 +30,9 @@ $(document).ready(function () {
 
   sessionStorage.setItem(CREATE_TYPE, CREATE_TYPE_CREATE);
   console.log(sessionStorage.getItem(CREATE_TYPE))
+
+
+ 
   
 
   let obj = {
@@ -46,6 +51,72 @@ $(document).ready(function () {
     preference: "",
     eventType: "",
   };
+
+
+     
+  let alrt = async(eventType, title, icon, callback) =>{
+    return await swtAlrt(eventType, title, icon).then(() =>{
+      callback
+    })
+}
+
+  
+  let validate = () => {
+    if(obj.eventName.length == 0){
+      alrt("error", "event name is not set", "error")
+      return
+    }
+    if(obj.organiserName.length == 0){
+      alrt("error", "organiser name is not set", "error")
+      return
+    }
+    
+    if(obj.summary.length == 0){
+      alrt("error", "summary is not set", "error")
+      return
+    }
+
+    if(obj.cost.length == 0){
+      alrt("error", "cost is not set", "error")
+      return
+    }
+
+    if(obj.imgUrl.length == 0){
+      alrt("error", "image is not set", "error")
+      return
+    }
+
+    if(obj.location.length == 0){
+      alrt("error", "location address is not set", "error")
+      return
+    }
+
+    if(obj.eventType.length == 0){
+      alrt("error", "location type is not set", "error")
+      return
+    }
+
+    if(obj.startDate.length == 0){
+      alrt("error", "start date is not set", "error")
+      return
+    }
+
+    if(obj.startTime.length == 0){
+      alrt("error", "start time is not set", "error")
+      return
+    }
+
+    if(obj.endDate.length == 0){
+      alrt("error", "end date is not set", "error")
+      return
+    }
+    
+    if(obj.endTime.length == 0){
+      alrt("error", "end time is not set", "error")
+      return
+    }
+
+  }
 
   // }
 
@@ -97,8 +168,41 @@ $(document).ready(function () {
 
   initialize();
 
+  let invalidateLocation = () =>{
+
+    try{
+    if(obj2 == null)
+    return false
+
+
+    if(obj2.lat == null){
+      alrt("error", "location is not set", "error")
+      sessionStorage.setItem(CREATE_STATE, COMPLETE);
+      return false
+    }
+
+    if(obj2.lng == null){
+      alrt("error", "location is not set", "error")
+      sessionStorage.setItem(CREATE_STATE, COMPLETE);
+      return false
+    }
+
+    return true;
+  }catch(e){
+    sessionStorage.setItem(CREATE_STATE, COMPLETE);
+  }
+  }
+
   let setDataFromSessionStorage = () => {
     if (obj.eventType == "venue") {
+
+      console.log('entered')
+      let run = invalidateLocation();
+      if(run  == false ){
+        console.log(sessionStorage.getItem(CREATE_STATE))
+        sessionStorage.setItem(CREATE_STATE, COMPLETE)
+        return
+      }
       obj.latitude = obj2.lat;
       obj.longitude = obj2.lng;
       obj.location = obj2.address;
@@ -134,9 +238,16 @@ $(document).ready(function () {
     obj2 = JSON.parse(sessionStorage.getItem(EVENT_LOCATION_KEY));
     // console.log(obj.location)
     // sessionStorage.setItem(CREATE_STATE, "COMPLETE")
+
     setDataFromSessionStorage(obj, obj2);
 
   }
+
+
+  // if(sessionStorage.getItem(CREATE_STATE) == COMPLETE){
+
+  //   setDataFromSessionStorage();
+  // }
 
 
   let saveDataToSessionStorage = () => {
@@ -189,25 +300,31 @@ $(document).ready(function () {
     return (window.location = GOOGLE_PATH);
   };
 
+
+
   $("#button-create").click(function (e) {
     e.preventDefault();
     sessionStorage.setItem(CREATE_STATE, COMPLETE);
-    sessionStorage.setItem(CREATE_STATUS, null);
+    // sessionStorage.setItem(CREATE_STATUS, null);
 
     saveDataToSessionStorage();
     console.log(obj);
     if (obj.eventName == null) return;
 
+    validate();
+
    
 
     let url = `${URL_EVENTS}/createEvent/${userId.id}/events`;
     let result = async () => {
-      let ret = await submitEventDetails(obj, url).then((res) => {
+      let ret = await submitEventDetails(JSON.stringify(obj), url, userId.token).then((res) => {
         console.log("what todo", res);
         if (res == true) {
           console.log("should redirect");
           sessionStorage.setItem("sweetAlert", "success");
           redirect();
+        }else{
+          sessionStorage.setItem(CREATE_STATE, INCOMPLETE);
         }
       });
       console.log("this is the ajax response" + ret);
