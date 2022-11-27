@@ -198,15 +198,15 @@ $(document).ready(function () {
             <div id="line">
               <div class="event-details">
                 <p class="title" id="eventName">${single.eventName}</p>
-                <p class="type" id="location">${single.organiserName}</p>
-                <p class="date-time">${day} ${month}, ${year} ${single.startTime}</p>
+                <p class="type" id="location">${single.address.city}</p>
+              
               </div>
             </div>
 
             <div id="three">
-              <div>0/0</div>
+              <div style="color:black">0/0</div>
               <div>${single.cost}</div>
-              <div id="eventType">${single.eventType}</div>
+              <div id="eventType" style="color:black">${single.eventType}</div>
             </div>
           </div>
 

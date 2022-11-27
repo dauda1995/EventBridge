@@ -129,8 +129,8 @@ $(document).ready(function () {
 
   let swt = (imglink) =>{
     Swal.fire({
-      title: 'Sweet!',
-      text: 'Modal with a custom image.',
+      title: "Reservation successful!",
+      text: userId.username,
       imageUrl: imglink,
       imageWidth: 400,
       imageHeight: 400,

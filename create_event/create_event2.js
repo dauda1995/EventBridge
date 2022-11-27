@@ -64,66 +64,80 @@ $(document).ready(function () {
   let validate = () => {
     if(obj.eventName.length == 0){
       alrt("error", "event name is not set", "error")
-      return
+      return false
     }
     if(obj.organiserName.length == 0){
       alrt("error", "organiser name is not set", "error")
-      return
+      return false
     }
     
     if(obj.summary.length == 0){
       alrt("error", "summary is not set", "error")
-      return
+      return false
     }
 
     if(obj.cost.length == 0){
       alrt("error", "cost is not set", "error")
-      return
+      return false
     }
 
     if(obj.imgUrl.length == 0){
       alrt("error", "image is not set", "error")
-      return
+      return false
     }
 
     if(obj.location.length == 0){
       alrt("error", "location address is not set", "error")
-      return
+      return false
     }
 
     if(obj.eventType.length == 0){
       alrt("error", "location type is not set", "error")
-      return
+      return false
     }
 
     if(obj.startDate.length == 0){
       alrt("error", "start date is not set", "error")
-      return
+      return false
     }
 
     if(obj.startTime.length == 0){
       alrt("error", "start time is not set", "error")
-      return
+      return false
     }
 
     if(obj.endDate.length == 0){
       alrt("error", "end date is not set", "error")
-      return
+      return false
     }
     
     if(obj.endTime.length == 0){
       alrt("error", "end time is not set", "error")
-      return
+      return false
     }
+    return true
 
   }
 
   // }
 
+  function timeValidate(id){
+
+    const date = document.getElementById(id);
+    date.min = new Date().toISOString().split("T")[0];
+    date.value = new Date().toISOString().split("T")[0];
+  }
+
   let initialize = () => {
-   
+
+
+    timeValidate('event-date-start');
+    timeValidate('event-date-end');
+    
+
+
     console.log("initialized");
-    let locationArr = ["online", "future", "venue"];
+    let locationArr = ["online", "venue"];
     venueType = "";
     selectButton(locationArr, ".list-button");
 
@@ -138,6 +152,11 @@ $(document).ready(function () {
       console.log(e.target.id);
       obj.eventType = e.target.id;
       venueType = e.target.id;
+
+      if(e.target.id == "online"){
+        console.log('lk')
+        $('#event-address').attr('placeholder', 'website');
+      }
 
       if (e.target.id == "venue") {
         console.log("venue clicked");
@@ -311,7 +330,13 @@ $(document).ready(function () {
     console.log(obj);
     if (obj.eventName == null) return;
 
-    validate();
+    let inv = validate();
+    
+    if(inv == false){
+      return
+    }
+
+   
 
    
 

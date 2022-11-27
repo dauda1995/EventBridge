@@ -314,7 +314,8 @@ a {
 }
 
 .event-details .title {
-  /* font-size: 15px; */
+  font-size: 0.9rem;
+  color:#4169e7
 }
 
 .event-details .type {
@@ -324,10 +325,23 @@ a {
   padding-top: 5px;
 }
 
-.event-details .date-time {
-  /* color: #948f9c; */
-  /* font-size: 12px;
-    font-weight:500; */
+ #three div{
+  color: #000; 
+  font-size: 0.9rem;
+  font-weight:500;
+ }
+
+.event-details .type{
+
+  /* color: #948f9c;  */
+  font-size: 0.9rem;
+  font-weight:500;
+}
+.event-details .date-time
+ { 
+  color: #948f9c; 
+  font-size: 0.8rem;
+  font-weight:500;
 }
 
 .arrow-detail {
