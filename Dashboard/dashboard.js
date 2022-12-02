@@ -94,7 +94,13 @@ $(document).ready(function () {
   }
     
   
+$('.nav-p').click(function (e) { 
+  e.preventDefault();
 
+
+
+  
+});
  
   $("#create-event").click(function (e) {
     e.preventDefault();

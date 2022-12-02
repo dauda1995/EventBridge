@@ -152,6 +152,8 @@ $(document).ready(function () {
             'Your file has been deleted.',
             'success'
           )
+
+          window.location = "../EventListPage/EventList.html";
             }
           });
 

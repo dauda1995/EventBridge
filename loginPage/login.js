@@ -45,7 +45,7 @@ $('document').ready(function(){
                 alrt('success', 'Login successful', 'success', window.location = "../new_concepts/landingPage.html");
             },
             error: function (response){
-                alrt('error', 'user already exists', 'error');
+                alrt('error', 'user doesn\'t exist', 'error');
             }
         });
 

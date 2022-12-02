@@ -173,6 +173,7 @@ $(document).ready(function () {
       let text = $(".list-button-time option:selected").text();
       console.log(text);
       category = text;
+   
     });
 
    
